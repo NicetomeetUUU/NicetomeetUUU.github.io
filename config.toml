@@ -1,0 +1,68 @@
+baseURL = "https://nicetomeetuuu.github.io/"
+defaultContentLanguage = "en"
+languageCode = "en"
+
+title = "QJJ-笔记"
+
+theme = "gokarna"
+
+# Automatically generate robots.txt
+enableRobotsTXT = true
+
+[menu]
+  [[menu.main]]
+    # Unique identifier for a menu item
+    identifier = "posts"
+
+    url = "/posts/"
+    
+    # You can add extra information before the name (HTML format is supported), such as icons
+    pre = ""
+
+    # You can add extra information after the name (HTML format is supported), such as icons
+    post = ""
+
+    # Display name
+    name = "笔记"
+
+    # Weights are used to determine the ordering
+    weight = 1
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 2
+    
+  [[menu.main]]
+    identifier = "github"
+    url = "https://github.com"
+    weight = 3
+    
+    # We use feather-icons: https://feathericons.com/
+    pre = "<span data-feather='github'></span>"
+
+[params]
+  avatarURL = "/pictures/xinzhizhu.jpg"
+
+  avatarSize = "size-l"
+
+  description = "日有所思，夜有所梦"
+
+  dateFormat = "2006年1月2日"
+
+  accentColor = "#FF4D4D"
+
+  ShowBackToTopButton = true
+
+  metaKeywords = ["blog", "gokarna", "hugo"]
+
+  showPostsOnHomePage = "recent"
+
+  footer = "一只正在学技术的菜鸟"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = false
