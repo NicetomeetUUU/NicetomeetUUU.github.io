@@ -6,14 +6,253 @@
     <description>Recent content in Posts on QJJ-笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nicetomeetuuu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>技术文档部分记录</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E9%83%A8%E5%88%86/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E9%83%A8%E5%88%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>需求分析部分记录</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E9%83%A8%E5%88%86/</link>
+      <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E9%83%A8%E5%88%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OS学习笔记</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E5%85%AB%E8%82%A1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86/</link>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E5%85%AB%E8%82%A1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>网络系统部分</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86/</link>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86/</guid>
+      <description>1. 零拷贝 2. I/O多路复用 3. 高性能网络模式：Reactor与Proactor </description>
+    </item>
+    <item>
+      <title>git使用</title>
+      <link>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-94eadd4043184fb18d4314cb6703e492/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-94eadd4043184fb18d4314cb6703e492/</guid>
+      <description>Git使用教程 1. 新建远程仓库与本地仓库并建立连接 1.1 在github上创建远程仓库： 不管是fork还是自己建立都可以；
+1.2 在本地新建路径，与远程仓库建立连接： 设定一下在当前设备的使用人昵称与邮箱地址：
+开发阶段这个步骤很重要，通过log可以看到每个版本提交人的具体信息，以支持分布式的系统控制。 git config --global user.name &amp;#34;qjj&amp;#34; git config --global user.email &amp;#34;rhysqiuj@gmail.com&amp;#34; 新建代码文件夹，并声明为git仓库：
+mkdir my_repo cd my_repo git init #声明完毕会出现.git文件夹，里面包含远程连接需要的信息 在本路径下新建文件并提交到本地仓库内：
+touch readme.md vim readme.md #通过vim为readme添加内容 git commit -m &amp;#34;upload a readme.md file&amp;#34; #commit命令执行伴随-m参数，设定本次提交的修改之处，开发的时候需要多次修改 可以使用git status查看工作区的状态，使用git diff查看修改内容：
+rhysqiu@RhysQiudeMacBook-Air learngit % git status On branch main nothing to commit, working tree clean 修改一下readme.txt文件，看看会发生什么： vim readme.txt #在vim中为readme文件添加一段话“I&amp;#39;m a student study in DLUT.” git status #output On branch main Changes not staged for commit: (use &amp;#34;git add &amp;lt;file&amp;gt;.</description>
+    </item>
+    <item>
+      <title>hugo&#43;github搭建静态个人网站</title>
+      <link>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/hugo&#43;github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-ad1a5fb74e544849875d20b79d6c7c3c/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/hugo&#43;github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-ad1a5fb74e544849875d20b79d6c7c3c/</guid>
+      <description>hugo+github搭建静态个人网站 1. 概念与准备工作 Hugo是利用go语言写的静态网站生成器，把markdown文件转成html； 需要维护两个仓库： 一个保存markdown文件与图片等； 另一个保存由hugo生成的静态html； 需要前期注册github账号，并在账户中添加本地ssh-key信息 需要一个趁手的编译器； 2. hugo安装 我使用macOS直接拿安装包管理器brew安装：
+brew install hugo 检查安装效果：
+hugo version 3. 创建github仓库： 3.1 先创建一个保存markdown文件和图片的仓库 名字随便起； 设置public，创建个readme； 3.2 创建静态页面仓库 仓库名称必须使用特殊格式： .github.io. 其中是github昵称； 设置public，创建readme（会默认选定main作为主分支）； 4. 使用hugo创建网站 创建网站文件夹：
+hugo new site &amp;lt;your_site_name&amp;gt; 创建后在当前目录生成一个文件夹，cd进去可以发现文件列表如下：
+其中，关键文件夹是content、public与themes content保存博客源文件； public内保存hugo生成的静态网站； themes是自建或下载的网页主题； hugo site放到github上： 未完待续。。。 </description>
+    </item>
+    <item>
+      <title>ros-srv通信</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/ros-srv%E6%9C%8D%E5%8A%A1%E7%BC%96%E5%86%99-3b178fef3da542e3a1be1d873f7492e1/</link>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/ros-srv%E6%9C%8D%E5%8A%A1%E7%BC%96%E5%86%99-3b178fef3da542e3a1be1d873f7492e1/</guid>
+      <description>ROS-srv服务编写 Person: COO Ni
+本篇记录ros-srv服务实现 1. 在ros-package下创建srv通信格式 修改package.xml &amp;lt;!--添加编译生成服务消息包与运行加载服务消息包--&amp;gt; &amp;lt;build_depend&amp;gt;message_generation&amp;lt;/build_depend&amp;gt; &amp;lt;exec_depend&amp;gt;message_runtime&amp;lt;/exec_depend&amp;gt; 自定义CMakeLists.txt find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs geometry_msgs //用到哪个包就要放进来哪个包 message_generation //把message_generation放到cmake文件中, 编译消息类型 //不用放runtime, 因为它在运行过程中生效 ) generate_messages( DEPENDENCIES std_msgs geometry_msgs ) //这里要声明选用的消息格式, 由于我用到pose和bool所以加上geometry_msgs 自定义srv服务消息格式: 我这里新建了一个call_for_move.srv文件
+-用于分割请求部分与响应部分, 这里想发目标位姿, 返回是否正确执行； geometry_msgs/Pose pose --- std_msgs/Bool success 在CMakeList.txt文件下声明此消息类型:
+add_service_files( FILES call_for_move.srv ) 编译工作区, 并使用rossrv show name.srv查看类型:
+rossrv show call_for_move.srv [gazebo_tactile_data_simulator/call_for_move]: geometry_msgs/Pose pose geometry_msgs/Point position float64 x float64 y float64 z geometry_msgs/Quaternion orientation float64 x float64 y float64 z float64 w --- std_msgs/Bool success bool data 2.</description>
+    </item>
+    <item>
+      <title>线程池在webserver中的实现</title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%83%A8%E5%88%86/</link>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%83%A8%E5%88%86/</guid>
+      <description>1. 线程池总览 2. 代码详解 2.1 线程池对象可直接调用的成员函数包括append和append-p： 2.2 线程池对象构造与析构函数 2.3 worker函数： 3. 总结： 1. 线程池总览 实现了一个基于生产者-消费者模型的线程池： 生产者是调用append或者append-p方法的线程； 消费者是线程池中的工作线程，在run方法中循环等待任务出现； 2. 代码详解 类总览： template &amp;lt;typename T&amp;gt; class threadpool { public: /*thread_number是线程池中线程的数量，max_requests是请求队列中最多允许的、等待处理的请求的数量*/ threadpool(int actor_model, connection_pool *connPool, int thread_number = 8, int max_request = 10000); ~threadpool(); bool append(T *request, int state); bool append_p(T *request); private: /*工作线程运行的函数，它不断从工作队列中取出任务并执行之*/ static void *worker(void *arg); void run(); private: int m_thread_number; //线程池中的线程数 int m_max_requests; //请求队列中允许的最大请求数 pthread_t *m_threads; //描述线程池的数组，其大小为m_thread_number std::list&amp;lt;T *&amp;gt; m_workqueue; //请求队列 locker m_queuelocker; //保护请求队列的互斥锁 sem m_queuestat; //是否有任务需要处理 connection_pool *m_connPool; //数据库 int m_actor_model; //模型切换 }; 维护最大请求数、线程数、线程池数组（线程指针）、请求队列、互斥锁、信号量实现的待处理任务记录、数据库链接池、模型类型（Reactor or Proactor）； 2.</description>
+    </item>
+    <item>
+      <title>日志系统在webserver中的实现</title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86/</link>
+      <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86/</guid>
+      <description>1. 日志系统总览 2. 代码实现 2.1 阻塞队列 2.2 log类 2.2.1 示例获取get_instance() 2.2.2 异步缓冲区写入flush_log_thread() 2.3 log类的共有成员函数 1. 初始化函数： 2. Log::write_log()：写日志。这个函数接受一个日志级别和一个格式化字符串，然后生成一条日志并写入日志文件或者阻塞队列。如果当前日期不是今天，或者日志文件的行数达到了最大值，那么会创建一个新的日志文件。 3. Log::flush()：刷新日志。这个函数会强制将日志缓冲区的内容写入日志文件。 3. 总结： 1. 日志系统总览 首先通过循环数组实现了一个阻塞队列 log类工作在单例模式下，单例模式详解如下： 单例模式 日志写入可以选择同步模式（线程自身调用函数打印日志）、也可以选择异步模式（将日志输入阻塞队列，待写入线程处理，阻塞队列实际上是FIFO的模式，根据线程调度先后写入，不保障顺序）； 使用互斥锁保护日志文件与日志缓冲区，保障每一时刻只有一个线程写入日志； 2. 代码实现 2.1 阻塞队列 阻塞队列每次操作数组前，通过互斥锁维护线程安全； 构造函数：阻塞队列有最大值，初始化时刻将构造一个最大值大小数组，size设为0，队头指针与队尾指针设为-1； 析构函数：析构直接释放循环数组； 就是通过首尾指针在maxsize上的遍历与size对元素总量的记录实现队列中数据的流入与流出 2.2 log类 2.2.1 示例获取get_instance() static Log *get_instance() { static Log instance; return &amp;amp;instance; } 2.2.2 异步缓冲区写入flush_log_thread() static void *flush_log_thread(void *args) { Log::get_instance()-&amp;gt;async_write_log(); } private: void *async_write_log() { string single_log; //从阻塞队列中取出一个日志string，写入文件 while (m_log_queue-&amp;gt;pop(single_log)) { m_mutex.</description>
+    </item>
+    <item>
+      <title>各类线程锁在webserver中的实现</title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E9%94%81%E9%83%A8%E5%88%86/</link>
+      <pubDate>Wed, 20 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E9%94%81%E9%83%A8%E5%88%86/</guid>
+      <description>1. 线程锁总览 简述： 2. 代码实现 2.1 sem信号量控制类 2.2 locker互斥锁类 2.3 cond条件变量设置 3. 总结 1. 线程锁总览 使用 信号量、互斥量、条件变量 实现线程锁 封装为类，在超出作用域可以自动析构，保证线程安全 简述： 互斥锁（Mutex）：主要用于保护共享资源，防止多个线程同时访问。一个线程在访问共享资源前需要获取互斥锁，访问结束后释放互斥锁。如果其他线程在这个时候也试图获取互斥锁，它会被阻塞直到互斥锁被释放。
+信号量（Semaphore）：主要用于限制对共享资源的访问数量。信号量内部维护了一个计数器，线程在访问共享资源前需要调用wait（或P）操作，访问结束后调用post（或V）操作。如果计数器的值为0，wait操作会阻塞线程直到计数器的值大于0。
+条件变量（Condition Variable）：主要用于线程间的条件同步。线程可以在条件不满足时调用wait操作被阻塞，其他线程在条件满足后调用signal或broadcast操作唤醒被阻塞的线程。条件变量通常和互斥锁一起使用，互斥锁用于保护条件的状态，条件变量用于等待和通知条件的改变。
+条件变量和信号量之间的区别： 条件变量更适合用于&amp;quot;等待某个条件成立&amp;quot;的场景，而信号量更适合用于&amp;quot;限制对共享资源的并发访问数量&amp;quot;的场景
+2. 代码实现 2.1 sem信号量控制类 构造函数析构函数没得说 wait函数用来等待信号量，当信号量值大于0，sem_wait立即返回0，否则返回非0值； post函数释放资源，使信号量增加，并且唤醒等待中的进程； class sem { public: sem() { if (sem_init(&amp;amp;m_sem, 0, 0) != 0) { throw std::exception(); } } sem(int num) { if (sem_init(&amp;amp;m_sem, 0, num) != 0) { throw std::exception(); } } ~sem() { sem_destroy(&amp;amp;m_sem); } bool wait() { return sem_wait(&amp;amp;m_sem) == 0; } bool post() { return sem_post(&amp;amp;m_sem) == 0; } private: sem_t m_sem; }; 2.</description>
+    </item>
+    <item>
+      <title>1. 环境配置</title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>mysql数据库环境配置 1. 环境安装与配置(ubuntu 20.04 x86架构) 2. 运行配置 3. 卸载 4. 打包成docker镜像方便部署 5. 需要安装cpp相关的lib才能调用mysql的头文件： 1. 环境安装与配置(ubuntu 20.04 x86架构) 参考链接: https://ubuntu.com/server/docs/databases-mysql
+先安装mysql-server: sudo apt-get install mysql-server
+安装完毕后, server将立即启动, 可以通过service查看
+sudo service mysql status&amp;#39; #输出如下 ● mysql.service - MySQL Community Server Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset&amp;gt; Active: active (running) since Wed 2024-03-06 16:01:23 CST; 1min 4s ago Main PID: 166010 (mysqld) Status: &amp;#34;Server is operational&amp;#34; Tasks: 37 (limit: 28653) Memory: 364.6M CGroup: /system.</description>
+    </item>
+    <item>
+      <title>gelsight_driver.py文件解析</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/</guid>
+      <description>gelsight_driver.py文件解析 1. 图像基础操作函数: #基础图像处理部分 def show_normalized_img(name, img): draw = img.copy() draw -= np.min(draw) draw = draw / np.max(draw) cv2.imshow(name, draw) return draw #归一化图像, 变为0-1间的值 def gkern2(kernlen=21, nsig=3): &amp;#34;&amp;#34;&amp;#34;Returns a 2D Gaussian kernel array.&amp;#34;&amp;#34;&amp;#34; # create nxn zeros inp = np.zeros((kernlen, kernlen)) # set element at the middle to one, a dirac delta inp[kernlen // 2, kernlen // 2] = 1 # gaussian-smooth the dirac, resulting in a gaussian filter mask return fi.</description>
+    </item>
+    <item>
+      <title>gelsight成像与仿真&#43;实际数据拟合方法</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight%E6%88%90%E5%83%8F%E4%B8%8E%E4%BB%BF%E7%9C%9F&#43;%E5%AE%9E%E9%99%85%E6%95%B0%E6%8D%AE%E6%8B%9F%E5%90%88%E6%96%B9%E6%B3%95-ef28dd2ddd0c4027a663280bfe9bf382/</link>
+      <pubDate>Sat, 21 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight%E6%88%90%E5%83%8F%E4%B8%8E%E4%BB%BF%E7%9C%9F&#43;%E5%AE%9E%E9%99%85%E6%95%B0%E6%8D%AE%E6%8B%9F%E5%90%88%E6%96%B9%E6%B3%95-ef28dd2ddd0c4027a663280bfe9bf382/</guid>
+      <description>gelsight成像与仿真+实际数据拟合方法 论文原文: Generation of GelSight Tactile Images for Sim2Real Learning 项目源码： https://danfergo.github.io/gelsight-simulation 1. 引言 为什么机器人用到触觉传感器： 视觉传感器在遮挡、不同光照条件下，效果不佳； 机器人操作环境中，避免不了出现手臂或手掌遮挡目标的情况； 为什么要做sim2real： 节省时间与硬件资源，在仿真中训练，在实际环境中微调； rl类型训练需要试错积累，防止造成硬件损坏； gelsight 这种visual-based 触觉传感器优势在哪： 相比于传统使用触觉单元的触觉传感器，其分辨率更高； 如何为gelsight做sim2real： real world下，gelsight通过内部相机捕获膜形变的形式来回传触觉数据； 在gazebo1仿真中，用深度相机捕获接触物体表面深度图，再近似形变为膜形变的高度图： 使用Bivariate Gaussian filtering（双变量高斯滤波） 使用Phong着色模型渲染传感器内部照明 方法评估与效果： 评估方法：评估个毛,直接用 可以扩展到unity和pybullet环境下；
+2. gelsight工作原理具体说明 实际环境下sensor的工作原理：
+组成部分： 凝胶、透明硬玻璃板、相机、内部照明设备； 相机监测凝胶形变，产生触觉图片； 内部照明有单光类型，也有RGB类型； 仿真下sensor通过 Phong着色模型渲染，可以选定基础图片颜色； 3. 论文中用到的仿真模型说明 仿真中sensor的数据采集原理：
+直接从深度图生成触觉图像，流程如下图所示：
+1.1 elastomer的高度图基于深度相机捕获的深度图生成（也就是形变图），
+1.2 再通过Gaussian 滤波平滑化，
+2.1 计算表明法线为离散导数，
+2.2 再应用Phong模型进行着色（计算内部照明）；
+弹性体（凝胶）的高度图如何从深度图转换而来： 在仿真中，把一个基于结构光的深度相机放在实际中RGB相机位置上，如下图：
+仿真中直接获取弹性体与物体的接触点深度； 根据弹性体能够接触到的最大深度$d_{max}$，对深度图做阈值化处理，得到形变高度图$H_0$； $H_0(x, y)=\left{ \begin{aligned} D(x,y) &amp;amp; &amp;amp;ifD(x,y)&amp;lt;=D_{max} \ d_{max} &amp;amp; &amp;amp; otherwise \ \end{aligned} \right.</description>
+    </item>
+    <item>
+      <title>自建触觉数据采集功能包</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/</link>
+      <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/</guid>
+      <description>tactile_data_collector_ws设置 Tags: Gazebo, ROS Person: COO Ni
+gazebo_tactile_data_simulator功能包 这个功能包主要完成 ur10e arm和 gelsight在 gazebo中的连通, 末端位姿控制与触觉数据采集；
+直接上结论:
+默认需要在同workspace src目录下放置 universal_robot 功能包和 gelsight_description 功能包；
+1. 首先将gelsight模型搭载到ur10e的末端 tool0 关节, 修改ur_gazebo下的urdf/ur_macro.xacro文件如下: &amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt; &amp;lt;robot xmlns:xacro=&amp;#34;http://wiki.ros.org/xacro&amp;#34;&amp;gt; &amp;lt;!--前面都跳过 --&amp;gt; &amp;lt;xacro:include filename=&amp;#34;$(find ur_description)/urdf/inc/ur_macro.xacro&amp;#34;/&amp;gt; &amp;lt;!-- Add the gelsight on the end of the robot --&amp;gt; &amp;lt;xacro:include filename=&amp;#34;$(find gelsight_description)/urdf/gelsight2014.xacro&amp;#34;/&amp;gt; &amp;lt;joint name=&amp;#34;hook_gelsight_printer&amp;#34; type=&amp;#34;fixed&amp;#34;&amp;gt; &amp;lt;origin xyz=&amp;#34;0 0.007 0.005&amp;#34; rpy=&amp;#34;0 0 ${pi/2}&amp;#34;/&amp;gt; &amp;lt;parent link=&amp;#34;tool0&amp;#34;/&amp;gt; &amp;lt;child link=&amp;#34;gelsight_base&amp;#34;/&amp;gt; &amp;lt;/joint&amp;gt; &amp;lt;!--后面也都跳过,不需要修改 --&amp;gt; &amp;lt;/xacro:macro&amp;gt; &amp;lt;/robot&amp;gt; 2. 写launch文件, 启动ur10e_bringup.</description>
+    </item>
+    <item>
+      <title>docker 相关手册</title>
+      <link>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/1-docker%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E5%8F%82%E8%80%83-aa98ca8df81a4c508096a624d0e9ef49/</link>
+      <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/1-docker%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E5%8F%82%E8%80%83-aa98ca8df81a4c508096a624d0e9ef49/</guid>
+      <description>1. Docker使用手册参考 1.1 镜像相关： #拉取到本地 docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签] #启动镜像创建容器、it表示交互式终端操作，rm为关闭后移除容器（测试效果时推荐使用） docker run -it --rm ubuntu:18.04 bash #启动镜像指定容器名与宿主端口映射 docker run --name webserver -d -p 80:80 nginx #列出本地镜像 docker images docker image ls #后接名字可以指定列出的镜像 #查看镜像体积 docker system df #删除较老的本地镜像 docker image prune docker image rm #镜像名centos #将容器保存为新的镜像 docker commit \ --author &amp;#34;Tao Wang &amp;lt;twang2218@gmail.com&amp;gt;&amp;#34; \ --message &amp;#34;修改了默认网页&amp;#34; \ webserver \ #容器名 nginx:v2 #新镜像名称 1.2 容器相关： #进入容器（exit后不销毁容器） docker exec -it container_id bash #挂载主机目录到docker容器内 docker -v /host/dir:/target/dir image_name #挂载多目录到container内，可以多次调用-v #一键删除多个已经停止的容器 docker container prune #一次尝试 xhost local:root XAUTH=/tmp/.</description>
+    </item>
+    <item>
+      <title>wsl2 走宿主机代理设置</title>
+      <link>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/wsl2-%E8%B5%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE-703ad7ccf2d048dbadb125dd91a9d192/</link>
+      <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/wsl2-%E8%B5%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE-703ad7ccf2d048dbadb125dd91a9d192/</guid>
+      <description>wsl2 走宿主机代理设置 在常用目录下新建一个bash脚本，在其中填入如下信息： #!/bin/sh hostip=$(cat /etc/resolv.conf | grep nameserver | awk &amp;#39;{ print $2 }&amp;#39;) wslip=$(hostname -I | awk &amp;#39;{print $1}&amp;#39;) port=7890 #这里指代宿主机的代理端口 #这里插一句，由于wsl2动态分配ip地址，所以需要使用如上命令获得当前dns服务器ip PROXY_HTTP=&amp;#34;http://${hostip}:${port}&amp;#34; set_proxy(){ export http_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; export HTTP_PROXY=&amp;#34;${PROXY_HTTP}&amp;#34; export https_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; export HTTPS_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; } unset_proxy(){ unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY } test_setting(){ echo &amp;#34;Host ip:&amp;#34; ${hostip} echo &amp;#34;WSL ip:&amp;#34; ${wslip} echo &amp;#34;Current proxy:&amp;#34; $https_proxy } if [ &amp;#34;$1&amp;#34; = &amp;#34;set&amp;#34; ] then set_proxy elif [ &amp;#34;$1&amp;#34; = &amp;#34;unset&amp;#34; ] then unset_proxy elif [ &amp;#34;$1&amp;#34; = &amp;#34;test&amp;#34; ] then test_setting else echo &amp;#34;Unsupported arguments.</description>
+    </item>
+    <item>
+      <title>Robotiq140——ros功能包实机调试</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/</link>
+      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/</guid>
+      <description>Robotiq140——ros功能包实机调试 Person: COO Ni
+1. 获取kinect版本的robotiq功能包，本地编译通过，记得安装joint_state_publisher_gui； 2. 使用usb联通设备开始调试： 需要为usb修改配置串口，首先查看Robotiq设备在系统中串口显示； 默认会显示为 ttyUSB0 串口，针对此串口修改即可： 参考的ros官网教程：http://wiki.ros.org/robotiq/Tutorials/Control of a 2-Finger Gripper using the Modbus RTU protocol (ros kinetic and newer releases) 需要给串口读写操作，建议将设备用户添加到dialout group，确保永久读写权限 sudo usermod -a -G dialout $username sudo usermod -a -G dialout the_computer_user_name #查看连接的串口 dmesg | grep tty #输出如下 [ 0.004000] console [tty0] enabled [ 1.781526] 00:05: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A [421151.583450] usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0 [434351.</description>
+    </item>
+    <item>
+      <title>realsense内参获取方法</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/realsense%E5%86%85%E5%8F%82%E8%8E%B7%E5%8F%96-38e13bb40a12400d9e6698826a0bf08f/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/realsense%E5%86%85%E5%8F%82%E8%8E%B7%E5%8F%96-38e13bb40a12400d9e6698826a0bf08f/</guid>
+      <description>realsense内参获取 Person: COO Ni
+1. realsense内参标定: 需要先安装camera_calibration功能包，直接默认装ros的就行 需要下载并打印一个标定板（注意选定交叉点个数和每个正方块的大小） 相机标定： roslaunch realsense2_camera rs_camera.launch #先启相机 rosrun camera_calibration cameracalibarator.py --size nxm ----square 0.027 image:=/camera/color/image_raw camera:=/camera_color_optical_frame --no-service-check #要注意换掉交叉点个数和正方块大小参数 生成的内参数据放到file://$(find realsense2_camera)/calibration/ 下的realsense_rgb.yaml 文件内（执行会告诉你内参数据在哪，标定用的图片也会同步存储）； 这里要解决一个ubuntu自带pip版本过低，需要进一步更新的问题，解决方案后面再补 标定板pdf下载链接 有realsense产品可以直接拿官方驱动获取内参: rs-sensor-control 命令可以启动参数获取, 注意需要正确连接realsense； 按照步骤取所需的参数即可； </description>
+    </item>
     <item>
       <title>Hello, world!</title>
       <link>https://nicetomeetuuu.github.io/posts/first_post/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/posts/first_post/</guid>
       <description>这是一个测试 hello hugo！</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/stl%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/stl%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/webserver%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0-1c70995b8a784a0b8142da4001180350/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/webserver%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0-1c70995b8a784a0b8142da4001180350/</guid>
+      <description>webserver项目学习 Tags: C++项目, 代码随想录
+本篇记录webserver项目代码与关键点实现 fork原作者代码并拉取到本地 参考的仓库代码:https://github.com/qinguoyi/TinyWebServer
+相当经典的C++项目
+1. mysql数据库环境配置 1.1 环境安装与配置(ubuntu 20.04 x86架构) 参考链接: https://ubuntu.com/server/docs/databases-mysql
+先安装mysql-server: sudo apt-get install mysql-server
+安装完毕后, server将立即启动, 可以通过service查看
+sudo service mysql status&amp;#39; #输出如下 ● mysql.service - MySQL Community Server Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset&amp;gt; Active: active (running) since Wed 2024-03-06 16:01:23 CST; 1min 4s ago Main PID: 166010 (mysqld) Status: &amp;#34;Server is operational&amp;#34; Tasks: 37 (limit: 28653) Memory: 364.6M CGroup: /system.slice/mysql.service └─166010 /usr/sbin/mysqld 3月 06 16:01:22 kototo systemd[1]: Starting MySQL Community Server.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E5%AE%9A%E6%97%B6%E5%99%A8%E9%83%A8%E5%88%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E5%AE%9A%E6%97%B6%E5%99%A8%E9%83%A8%E5%88%86/</guid>
+      <description>1. 定时器部分总览 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/gin%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/gin%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BD%BF%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88/</guid>
+      <description>参考了博主的文章 原文链接：https://javaguide.cn/cs-basics/algorithms/10-classical-sorting-algorithms.html
+1. 排序算法分类： 可以分为： 内部排序：数据记录在内存中进行排序。 外部排序open in new window：因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。 术语说明: 稳定： 如果 A 原本在 B 前面，而 A=B，排序之后 A 仍然在 B 的前面。 不稳定：如果 A 原本在 B 的前面，而 A=B，排序之后 A 可能会出现在 B 的后面。 内排序：所有排序操作都在内存中完成。 外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行。 时间复杂度：定性描述一个算法执行所耗费的时间。 空间复杂度：定性描述一个算法执行所需内存的大小。 2. 常见的排序算法 常见的内部排序算法有：
+插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等，本文只讲解内部排序算法。 用一张图概括： 3. 基于比较的排序算法 常见的快速排序、归并排序、堆排序以及冒泡排序等都属于比较类排序算法。 3.1 冒泡排序： 交换数值排序，动图如下： 评价： 稳定，最好O(n)，最差O(n^2)，平均O(n^2)； 代码实现： #include &amp;lt;&amp;gt; 3.2 选择排序： 每次选待排序数组中最大值（最小值）放在数组首位； 算法步骤 首先在未排序序列中找到最小（大）元素， 存放到排序序列的起始位置 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。 重复第 2 步，直到所有元素均排序完毕。 评价： 不稳定，最好O(n)，最差O(n^2)，平均O(n^2)； </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E9%83%A8%E5%88%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E9%83%A8%E5%88%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E8%BF%9B%E7%A8%8B%E9%94%81/%E4%BA%92%E6%96%A5%E9%94%81%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E8%BF%9B%E7%A8%8B%E9%94%81/%E4%BA%92%E6%96%A5%E9%94%81%E5%BA%94%E7%94%A8/</guid>
+      <description>互斥锁的使用（C++11） #include &amp;lt;iostream&amp;gt; #include &amp;lt;thread&amp;gt; #include &amp;lt;mutex&amp;gt; std::mutex mtx; // 全局互斥锁. int count = 0; // 全局共享资源. void func() { for (int i = 0; i &amp;lt; 100000; ++i) { std::lock_guard&amp;lt;std::mutex&amp;gt; lock(mtx); // 自动获取互斥锁. ++count; // 操作共享资源. // 当lock对象析构时，自动释放互斥锁. } } int main() { std::thread t1(func); std::thread t2(func); t1.join(); t2.join(); std::cout &amp;lt;&amp;lt; count &amp;lt;&amp;lt; std::endl; // 输出200000 return 0; } </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

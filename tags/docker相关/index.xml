@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker相关 on QJJ-笔记</title>
+    <link>https://nicetomeetuuu.github.io/tags/docker%E7%9B%B8%E5%85%B3/</link>
+    <description>Recent content in docker相关 on QJJ-笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nicetomeetuuu.github.io/tags/docker%E7%9B%B8%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker 相关手册</title>
+      <link>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/1-docker%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E5%8F%82%E8%80%83-aa98ca8df81a4c508096a624d0e9ef49/</link>
+      <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/1-docker%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E5%8F%82%E8%80%83-aa98ca8df81a4c508096a624d0e9ef49/</guid>
+      <description>1. Docker使用手册参考 1.1 镜像相关： #拉取到本地 docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签] #启动镜像创建容器、it表示交互式终端操作，rm为关闭后移除容器（测试效果时推荐使用） docker run -it --rm ubuntu:18.04 bash #启动镜像指定容器名与宿主端口映射 docker run --name webserver -d -p 80:80 nginx #列出本地镜像 docker images docker image ls #后接名字可以指定列出的镜像 #查看镜像体积 docker system df #删除较老的本地镜像 docker image prune docker image rm #镜像名centos #将容器保存为新的镜像 docker commit \ --author &amp;#34;Tao Wang &amp;lt;twang2218@gmail.com&amp;gt;&amp;#34; \ --message &amp;#34;修改了默认网页&amp;#34; \ webserver \ #容器名 nginx:v2 #新镜像名称 1.2 容器相关： #进入容器（exit后不销毁容器） docker exec -it container_id bash #挂载主机目录到docker容器内 docker -v /host/dir:/target/dir image_name #挂载多目录到container内，可以多次调用-v #一键删除多个已经停止的容器 docker container prune #一次尝试 xhost local:root XAUTH=/tmp/.</description>
+    </item>
+    <item>
+      <title>wsl2 走宿主机代理设置</title>
+      <link>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/wsl2-%E8%B5%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE-703ad7ccf2d048dbadb125dd91a9d192/</link>
+      <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/wsl2-%E8%B5%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE-703ad7ccf2d048dbadb125dd91a9d192/</guid>
+      <description>wsl2 走宿主机代理设置 在常用目录下新建一个bash脚本，在其中填入如下信息： #!/bin/sh hostip=$(cat /etc/resolv.conf | grep nameserver | awk &amp;#39;{ print $2 }&amp;#39;) wslip=$(hostname -I | awk &amp;#39;{print $1}&amp;#39;) port=7890 #这里指代宿主机的代理端口 #这里插一句，由于wsl2动态分配ip地址，所以需要使用如上命令获得当前dns服务器ip PROXY_HTTP=&amp;#34;http://${hostip}:${port}&amp;#34; set_proxy(){ export http_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; export HTTP_PROXY=&amp;#34;${PROXY_HTTP}&amp;#34; export https_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; export HTTPS_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; } unset_proxy(){ unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY } test_setting(){ echo &amp;#34;Host ip:&amp;#34; ${hostip} echo &amp;#34;WSL ip:&amp;#34; ${wslip} echo &amp;#34;Current proxy:&amp;#34; $https_proxy } if [ &amp;#34;$1&amp;#34; = &amp;#34;set&amp;#34; ] then set_proxy elif [ &amp;#34;$1&amp;#34; = &amp;#34;unset&amp;#34; ] then unset_proxy elif [ &amp;#34;$1&amp;#34; = &amp;#34;test&amp;#34; ] then test_setting else echo &amp;#34;Unsupported arguments.</description>
+    </item>
+  </channel>
+</rss>

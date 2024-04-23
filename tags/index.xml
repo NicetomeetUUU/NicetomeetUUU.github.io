@@ -6,20 +6,83 @@
     <description>Recent content in Tags on QJJ-笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nicetomeetuuu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>blog</title>
       <link>https://nicetomeetuuu.github.io/tags/blog/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>go项目</title>
+      <link>https://nicetomeetuuu.github.io/tags/go%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/go%E9%A1%B9%E7%9B%AE/</guid>
       <description></description>
     </item>
     <item>
       <title>personal reading</title>
       <link>https://nicetomeetuuu.github.io/tags/personal-reading/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/tags/personal-reading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>八股学习</title>
+      <link>https://nicetomeetuuu.github.io/tags/%E5%85%AB%E8%82%A1%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/%E5%85%AB%E8%82%A1%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>操作系统</title>
+      <link>https://nicetomeetuuu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>git相关</title>
+      <link>https://nicetomeetuuu.github.io/tags/git%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/git%E7%9B%B8%E5%85%B3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ros相关</title>
+      <link>https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C&#43;&#43;项目</title>
+      <link>https://nicetomeetuuu.github.io/tags/c&#43;&#43;%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/c&#43;&#43;%E9%A1%B9%E7%9B%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>webserver轻量级服务器</title>
+      <link>https://nicetomeetuuu.github.io/tags/webserver%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/webserver%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>docker相关</title>
+      <link>https://nicetomeetuuu.github.io/tags/docker%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/docker%E7%9B%B8%E5%85%B3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>wsl配置</title>
+      <link>https://nicetomeetuuu.github.io/tags/wsl%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/tags/wsl%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
   </channel>

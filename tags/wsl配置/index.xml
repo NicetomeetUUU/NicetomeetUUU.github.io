@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wsl配置 on QJJ-笔记</title>
+    <link>https://nicetomeetuuu.github.io/tags/wsl%E9%85%8D%E7%BD%AE/</link>
+    <description>Recent content in wsl配置 on QJJ-笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 23 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nicetomeetuuu.github.io/tags/wsl%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wsl2 走宿主机代理设置</title>
+      <link>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/wsl2-%E8%B5%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE-703ad7ccf2d048dbadb125dd91a9d192/</link>
+      <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/docker%E7%9B%B8%E5%85%B3/wsl2-%E8%B5%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE-703ad7ccf2d048dbadb125dd91a9d192/</guid>
+      <description>wsl2 走宿主机代理设置 在常用目录下新建一个bash脚本，在其中填入如下信息： #!/bin/sh hostip=$(cat /etc/resolv.conf | grep nameserver | awk &amp;#39;{ print $2 }&amp;#39;) wslip=$(hostname -I | awk &amp;#39;{print $1}&amp;#39;) port=7890 #这里指代宿主机的代理端口 #这里插一句，由于wsl2动态分配ip地址，所以需要使用如上命令获得当前dns服务器ip PROXY_HTTP=&amp;#34;http://${hostip}:${port}&amp;#34; set_proxy(){ export http_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; export HTTP_PROXY=&amp;#34;${PROXY_HTTP}&amp;#34; export https_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; export HTTPS_proxy=&amp;#34;${PROXY_HTTP}&amp;#34; } unset_proxy(){ unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY } test_setting(){ echo &amp;#34;Host ip:&amp;#34; ${hostip} echo &amp;#34;WSL ip:&amp;#34; ${wslip} echo &amp;#34;Current proxy:&amp;#34; $https_proxy } if [ &amp;#34;$1&amp;#34; = &amp;#34;set&amp;#34; ] then set_proxy elif [ &amp;#34;$1&amp;#34; = &amp;#34;unset&amp;#34; ] then unset_proxy elif [ &amp;#34;$1&amp;#34; = &amp;#34;test&amp;#34; ] then test_setting else echo &amp;#34;Unsupported arguments.</description>
+    </item>
+  </channel>
+</rss>

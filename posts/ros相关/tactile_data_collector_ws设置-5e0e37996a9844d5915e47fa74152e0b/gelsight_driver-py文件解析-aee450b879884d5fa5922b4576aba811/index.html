@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>gelsight_driver.py文件解析</title>
+    <meta name="description" content="在gazebo仿真下的gelsight数据采集环境">
+    <meta name="keywords" content='blog, gokarna, hugo, ros相关'>
+
+    <meta property="og:url" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="gelsight_driver.py文件解析">
+    <meta property="og:description" content="在gazebo仿真下的gelsight数据采集环境">
+    <meta property="og:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+    <meta property="og:image:secure_url" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="gelsight_driver.py文件解析">
+    <meta name="twitter:description" content="在gazebo仿真下的gelsight数据采集环境">
+    <meta property="twitter:domain" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/">
+    <meta property="twitter:url" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/">
+    <meta name="twitter:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    
+    <link rel="canonical" href="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.02dacf7714c2645136fbf75dd7d16fbc0b7d770133dac770c160e51a50724022.js" integrity="sha256-AtrPdxTCZFE2&#43;/dd19FvvAt9dwEz2sdwwWDlGlByQCI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nicetomeetuuu.github.io/">
+                <img src='/pictures/xinzhizhu.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nicetomeetuuu.github.io/">QJJ-笔记</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>gelsight_driver.py文件解析</h1>
+        <small role="doc-subtitle">在gazebo仿真下的gelsight数据采集环境</small>
+        <p class="post-date">2023年10月22日
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/blog">blog</a></li>
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3">ros相关</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="gelsight_driverpy文件解析">gelsight_driver.py文件解析</h1>
+<h2 id="1-图像基础操作函数">1. 图像基础操作函数:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#基础图像处理部分</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_normalized_img</span>(name, img):
+</span></span><span style="display:flex;"><span>    draw <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>    draw <span style="color:#f92672">-=</span> np<span style="color:#f92672">.</span>min(draw)
+</span></span><span style="display:flex;"><span>    draw <span style="color:#f92672">=</span> draw <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>max(draw)
+</span></span><span style="display:flex;"><span>    cv2<span style="color:#f92672">.</span>imshow(name, draw)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> draw
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#归一化图像, 变为0-1间的值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gkern2</span>(kernlen<span style="color:#f92672">=</span><span style="color:#ae81ff">21</span>, nsig<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Returns a 2D Gaussian kernel array.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># create nxn zeros</span>
+</span></span><span style="display:flex;"><span>    inp <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((kernlen, kernlen))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># set element at the middle to one, a dirac delta</span>
+</span></span><span style="display:flex;"><span>    inp[kernlen <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>, kernlen <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># gaussian-smooth the dirac, resulting in a gaussian filter mask</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> fi<span style="color:#f92672">.</span>gaussian_filter(inp, nsig)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#返回一个2d高斯核函数</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gaus_noise</span>(image, sigma):
+</span></span><span style="display:flex;"><span>    row, col <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>    mean <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    gauss <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(mean, sigma, (row, col))
+</span></span><span style="display:flex;"><span>    gauss <span style="color:#f92672">=</span> gauss<span style="color:#f92672">.</span>reshape(row, col)
+</span></span><span style="display:flex;"><span>    noisy <span style="color:#f92672">=</span> image <span style="color:#f92672">+</span> gauss
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> noisy
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#为图像按sigma参数增加噪声</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">derivative</span>(mat, direction):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> (direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;x&#39;</span> <span style="color:#f92672">or</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;y&#39;</span>), <span style="color:#e6db74">&#34;The derivative direction must be &#39;x&#39; or &#39;y&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>    kernel <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;x&#39;</span>:
+</span></span><span style="display:flex;"><span>        kernel <span style="color:#f92672">=</span> [[<span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;y&#39;</span>:
+</span></span><span style="display:flex;"><span>        kernel <span style="color:#f92672">=</span> [[<span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>], [<span style="color:#ae81ff">0.0</span>], [<span style="color:#ae81ff">1.0</span>]]
+</span></span><span style="display:flex;"><span>    kernel <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(kernel, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float64)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> cv2<span style="color:#f92672">.</span>filter2D(mat, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, kernel) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#使用一个简单的差分核（[-1, 0, 1]）来计算图像在x方向或y方向上的导数</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tangent</span>(mat):
+</span></span><span style="display:flex;"><span>    dx <span style="color:#f92672">=</span> derivative(mat, <span style="color:#e6db74">&#39;x&#39;</span>)
+</span></span><span style="display:flex;"><span>    dy <span style="color:#f92672">=</span> derivative(mat, <span style="color:#e6db74">&#39;y&#39;</span>)
+</span></span><span style="display:flex;"><span>    img_shape <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>shape(mat)
+</span></span><span style="display:flex;"><span>    _1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>repeat([<span style="color:#ae81ff">1.0</span>], img_shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> img_shape[<span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>reshape(img_shape)<span style="color:#f92672">.</span>astype(dx<span style="color:#f92672">.</span>dtype)
+</span></span><span style="display:flex;"><span>    unormalized <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>merge((<span style="color:#f92672">-</span>dx, <span style="color:#f92672">-</span>dy, _1))
+</span></span><span style="display:flex;"><span>    norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(unormalized, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (unormalized <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>repeat(norms[:, :, np<span style="color:#f92672">.</span>newaxis], <span style="color:#ae81ff">3</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#计算x,y方向上的导数, 也就是坡度, 用三维向量表示(传入的mat像素点值表示亮度[或深度])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solid_color_img</span>(color, size):
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(size <span style="color:#f92672">+</span> (<span style="color:#ae81ff">3</span>,), np<span style="color:#f92672">.</span>float64)
+</span></span><span style="display:flex;"><span>    image[:] <span style="color:#f92672">=</span> color
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> image
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##创建一个指定颜色和大小的图像</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_overlay</span>(rgb, alpha, color):
+</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>shape(alpha)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    opacity3 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>repeat(alpha, <span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>reshape((s[<span style="color:#ae81ff">0</span>], s[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">3</span>))  <span style="color:#75715e"># * 10.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    overlay <span style="color:#f92672">=</span> solid_color_img(color, s)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    foreground <span style="color:#f92672">=</span> opacity3 <span style="color:#f92672">*</span> overlay
+</span></span><span style="display:flex;"><span>    background <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> opacity3) <span style="color:#f92672">*</span> rgb<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float64)
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> background <span style="color:#f92672">+</span> foreground
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    res[res <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">255.0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>    res[res <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>uint8)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> res
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#将一个指定颜色和透明度的覆盖层添加到RGB图像上</span>
+</span></span></code></pre></div><h1 id="2-仿真中gelsight触觉传感器类">2. 仿真中gelsight触觉传感器类</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	class Simulation
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	@parame light_sources, background, px2m_ratio, elastomer_thickness, min_depth
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					光源, 背景, 比例转换, 凝胶厚度, 最小深度(透明介质大小)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimulationApproach</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, <span style="color:#f92672">**</span>config):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>light_sources <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;light_sources&#39;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>background <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;background_img&#39;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>px2m_ratio <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;px2m_ratio&#39;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>elastomer_thickness <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;elastomer_thickness&#39;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>min_depth <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;min_depth&#39;</span>]
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#定义光源, tactile背景图, 像素到米的比例值, 凝胶厚度与最小深度</span>
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>default_ks <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.15</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>default_kd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>default_alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#参数群, 用于phong照明</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>ka <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;ka&#39;</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0.8</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#环境光强度</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>texture_sigma <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;texture_sigma&#39;</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0.00001</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>t <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;t&#39;</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;t&#39;</span> <span style="color:#f92672">in</span> config <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>sigma <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;sigma&#39;</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;sigma&#39;</span> <span style="color:#f92672">in</span> config <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>kernel_size <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;sigma&#39;</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;sigma&#39;</span> <span style="color:#f92672">in</span> config <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">21</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>max_depth <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>min_depth <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>elastomer_thickness
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">protrusion_map</span>(self, original, not_in_touch):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#用于将超出最大深度的像素点深度回归到最大深度</span>
+</span></span><span style="display:flex;"><span>        protrusion_map <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>copy(original)
+</span></span><span style="display:flex;"><span>        protrusion_map[not_in_touch <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>max_depth] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>max_depth
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> protrusion_map
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">segments</span>(self, depth_map):
+</span></span><span style="display:flex;"><span>        not_in_touch <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>copy(depth_map)
+</span></span><span style="display:flex;"><span>        not_in_touch[not_in_touch <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>max_depth] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>        not_in_touch[not_in_touch <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>max_depth] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        in_touch <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> not_in_touch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> not_in_touch, in_touch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">internal_shadow</span>(self, elastomer_depth):
+</span></span><span style="display:flex;"><span>        elastomer_depth_inv <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>max_depth <span style="color:#f92672">-</span> elastomer_depth
+</span></span><span style="display:flex;"><span>        elastomer_depth_inv <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>interp(elastomer_depth_inv, (<span style="color:#ae81ff">0</span>, self<span style="color:#f92672">.</span>elastomer_thickness), (<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> elastomer_depth_inv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apply_elastic_deformation_v1</span>(self, protrusion_depth, not_in_touch, in_touch):
+</span></span><span style="display:flex;"><span>        kernel <span style="color:#f92672">=</span> gkern2(<span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span>        deformation <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>max_depth <span style="color:#f92672">-</span> protrusion_depth
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">#     # cv2.waitKey(10)</span>
+</span></span><span style="display:flex;"><span>            deformation <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>filter2D(deformation, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, kernel)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#     # show_normalized_img(&#39;deformation&#39;, deformation)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># return deformation</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-</span>deformation <span style="color:#f92672">*</span> not_in_touch <span style="color:#f92672">+</span> (protrusion_depth <span style="color:#f92672">*</span> in_touch)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apply_elastic_deformation</span>(self, protrusion_depth, not_in_touch, in_touch):
+</span></span><span style="display:flex;"><span>        protrusion_depth <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> (protrusion_depth <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>max_depth)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        kernel <span style="color:#f92672">=</span> gkern2(self<span style="color:#f92672">.</span>kernel_size, self<span style="color:#f92672">.</span>sigma)
+</span></span><span style="display:flex;"><span>        deformation <span style="color:#f92672">=</span> protrusion_depth
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        deformation2 <span style="color:#f92672">=</span> protrusion_depth
+</span></span><span style="display:flex;"><span>        kernel2 <span style="color:#f92672">=</span> gkern2(<span style="color:#ae81ff">52</span>, <span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>t):
+</span></span><span style="display:flex;"><span>            deformation_ <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>filter2D(deformation, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, kernel)
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(protrusion_depth) <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>max(deformation_) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>max(deformation_) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            deformation <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>maximum(r <span style="color:#f92672">*</span> deformation_, protrusion_depth)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            deformation2_ <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>filter2D(deformation2, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, kernel2)
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(protrusion_depth) <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>max(deformation2_) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>max(deformation2_) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            deformation2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>maximum(r <span style="color:#f92672">*</span> deformation2_, protrusion_depth)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        deformation_v1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>apply_elastic_deformation_v1(protrusion_depth, not_in_touch, in_touch)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># deformation2 = protrusion_depth</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>t):
+</span></span><span style="display:flex;"><span>            deformation_ <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>filter2D(deformation2, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, kernel)
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(protrusion_depth) <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>max(deformation_) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>max(deformation_) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            deformation2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>maximum(r <span style="color:#f92672">*</span> deformation_, protrusion_depth)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># for i in range(3):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># deformation3 = protrusion_depth</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># kernel3 = gkern2(21, 7)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># for i in range(3):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#     deformation3_ = cv2.filter2D(deformation3, -1, kernel3)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#     r = np.max(protrusion_depth) / np.max(deformation3_) if np.max(deformation3_) &gt; 0 else 1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#     deformation3 = np.maximum(r * deformation3_, protrusion_depth)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># # r = np.max(protrusion_depth) / np.max(deformation) if np.max(deformation) &gt; 0 else 1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># # deformation = np.maximum(r * deformation, protrusion_depth)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># # plt.axis(&#39;off&#39;)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.plot(list(range(len(protrusion_depth[150]))), -1 * protrusion_depth[240], color=&#34;gray&#34;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          label=&#39;Before Smoothing&#39;)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.plot(list(range(len(deformation[150]))), -1 * deformation[240], color=&#34;limegreen&#34;, linestyle=&#39;dashed&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          label=&#39;Single Gaussian&#39;)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># #</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># # plt.plot(list(range(len(deformation2[150]))), -1 * deformation[150] + deformation2[150], color=&#39;red&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># #          linestyle=&#39;dashed&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># #          label=&#39;with ratioxxxxx&#39;)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># # deformation_x = -1 * deformation[150] + deformation2[150] - deformation[150]</span>
+</span></span><span style="display:flex;"><span>        deformation_x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> deformation <span style="color:#f92672">-</span> deformation2
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.plot(list(range(len(deformation[150]))), - deformation_x[240], color=&#34;darkorange&#34;, linestyle=&#39;dashed&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          label=&#39;Difference of Gaussians&#39;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.plot(list(range(len(deformation2[150]))), -deformation_v1[150],</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          color=&#39;black&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          # linestyle=&#39;do&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          label=&#39;Previous &#39;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.plot(list(range(len(deformation2[150]))), deformation_x[150],</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          color=&#39;red&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          linestyle=&#39;dashed&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          label=&#39;with ratioxxxxx&#39;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># tangent = lambda arr: np.array([abs(arr[i + 1] - arr[i - 1]) / 2 if i &gt; 0 and i &lt; len(arr) - 2 else 0 for i in</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#                        range(len(arr))])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># t = tangent(deformation2[150])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.plot(list(range(len(deformation2[240]))),</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          deformation[150] + (np.max(deformation2[150]) / np.max(t)) * t,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          color=&#39;red&#39;,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#          label=&#39;After Filtering&#39;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.xticks([])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.yticks([])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.legend()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.show()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.clf()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># plt.cla()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># cv2.imwrite(&#39;protrusion.png&#39;, show_normalized_img(&#39;protrusion&#39;, protrusion_depth) * 255)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># cv2.imwrite(&#39;deformation.png&#39;, show_normalized_img(&#39;deformation&#39;, deformation) * 255)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>max_depth <span style="color:#f92672">-</span> deformation_x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">phong_illumination</span>(self, T, source_dir, kd, ks, alpha):
+</span></span><span style="display:flex;"><span>        dot <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(T, np<span style="color:#f92672">.</span>array(source_dir))<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float64)
+</span></span><span style="display:flex;"><span>        difuse_l <span style="color:#f92672">=</span> dot <span style="color:#f92672">*</span> kd
+</span></span><span style="display:flex;"><span>        difuse_l[difuse_l <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        dot3 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>repeat(dot[:, :, np<span style="color:#f92672">.</span>newaxis], <span style="color:#ae81ff">3</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        R <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.0</span> <span style="color:#f92672">*</span> dot3 <span style="color:#f92672">*</span> T <span style="color:#f92672">-</span> source_dir
+</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        spec_l <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>power(np<span style="color:#f92672">.</span>dot(R, V), alpha) <span style="color:#f92672">*</span> ks
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> difuse_l <span style="color:#f92672">+</span> spec_l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate</span>(self, obj_depth, return_depth<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># print(&#39;-----------&gt; &#39;, np.shape(obj_depth))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># cv2.imwrite(&#39;object_depth.png&#39;, obj_depth)</span>
+</span></span><span style="display:flex;"><span>        not_in_touch, in_touch <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>segments(obj_depth)
+</span></span><span style="display:flex;"><span>        protrusion_depth <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>protrusion_map(obj_depth, not_in_touch)
+</span></span><span style="display:flex;"><span>        elastomer_depth <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>apply_elastic_deformation(protrusion_depth, not_in_touch, in_touch)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        textured_elastomer_depth <span style="color:#f92672">=</span> gaus_noise(elastomer_depth, self<span style="color:#f92672">.</span>texture_sigma)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ka <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>background
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> add_overlay(out, self<span style="color:#f92672">.</span>internal_shadow(protrusion_depth), (<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        T <span style="color:#f92672">=</span> tangent(textured_elastomer_depth <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>px2m_ratio)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># show_normalized_img(&#39;tangent&#39;, T)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> light <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>light_sources:
+</span></span><span style="display:flex;"><span>            ks <span style="color:#f92672">=</span> light[<span style="color:#e6db74">&#39;ks&#39;</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;ks&#39;</span> <span style="color:#f92672">in</span> light <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>default_ks
+</span></span><span style="display:flex;"><span>            kd <span style="color:#f92672">=</span> light[<span style="color:#e6db74">&#39;kd&#39;</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;kd&#39;</span> <span style="color:#f92672">in</span> light <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>default_kd
+</span></span><span style="display:flex;"><span>            alpha <span style="color:#f92672">=</span> light[<span style="color:#e6db74">&#39;alpha&#39;</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;alpha&#39;</span> <span style="color:#f92672">in</span> light <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>default_alpha
+</span></span><span style="display:flex;"><span>            out <span style="color:#f92672">=</span> add_overlay(out, self<span style="color:#f92672">.</span>phong_illumination(T, light[<span style="color:#e6db74">&#39;position&#39;</span>], kd, ks, alpha), light[<span style="color:#e6db74">&#39;color&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        kernel <span style="color:#f92672">=</span> gkern2(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>filter2D(out, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, kernel)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># cv2.imshow(&#39;tactile img&#39;, out)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># cv2.imwrite(&#39;tactile_img.png&#39;, out)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> return_depth:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> out, elastomer_depth
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> out
+</span></span></code></pre></div>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 一只正在学技术的菜鸟</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

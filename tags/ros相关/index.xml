@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ros相关 on QJJ-笔记</title>
+    <link>https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3/</link>
+    <description>Recent content in ros相关 on QJJ-笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ros-srv通信</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/ros-srv%E6%9C%8D%E5%8A%A1%E7%BC%96%E5%86%99-3b178fef3da542e3a1be1d873f7492e1/</link>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/ros-srv%E6%9C%8D%E5%8A%A1%E7%BC%96%E5%86%99-3b178fef3da542e3a1be1d873f7492e1/</guid>
+      <description>ROS-srv服务编写 Person: COO Ni
+本篇记录ros-srv服务实现 1. 在ros-package下创建srv通信格式 修改package.xml &amp;lt;!--添加编译生成服务消息包与运行加载服务消息包--&amp;gt; &amp;lt;build_depend&amp;gt;message_generation&amp;lt;/build_depend&amp;gt; &amp;lt;exec_depend&amp;gt;message_runtime&amp;lt;/exec_depend&amp;gt; 自定义CMakeLists.txt find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs geometry_msgs //用到哪个包就要放进来哪个包 message_generation //把message_generation放到cmake文件中, 编译消息类型 //不用放runtime, 因为它在运行过程中生效 ) generate_messages( DEPENDENCIES std_msgs geometry_msgs ) //这里要声明选用的消息格式, 由于我用到pose和bool所以加上geometry_msgs 自定义srv服务消息格式: 我这里新建了一个call_for_move.srv文件
+-用于分割请求部分与响应部分, 这里想发目标位姿, 返回是否正确执行； geometry_msgs/Pose pose --- std_msgs/Bool success 在CMakeList.txt文件下声明此消息类型:
+add_service_files( FILES call_for_move.srv ) 编译工作区, 并使用rossrv show name.srv查看类型:
+rossrv show call_for_move.srv [gazebo_tactile_data_simulator/call_for_move]: geometry_msgs/Pose pose geometry_msgs/Point position float64 x float64 y float64 z geometry_msgs/Quaternion orientation float64 x float64 y float64 z float64 w --- std_msgs/Bool success bool data 2.</description>
+    </item>
+    <item>
+      <title>gelsight_driver.py文件解析</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight_driver-py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90-aee450b879884d5fa5922b4576aba811/</guid>
+      <description>gelsight_driver.py文件解析 1. 图像基础操作函数: #基础图像处理部分 def show_normalized_img(name, img): draw = img.copy() draw -= np.min(draw) draw = draw / np.max(draw) cv2.imshow(name, draw) return draw #归一化图像, 变为0-1间的值 def gkern2(kernlen=21, nsig=3): &amp;#34;&amp;#34;&amp;#34;Returns a 2D Gaussian kernel array.&amp;#34;&amp;#34;&amp;#34; # create nxn zeros inp = np.zeros((kernlen, kernlen)) # set element at the middle to one, a dirac delta inp[kernlen // 2, kernlen // 2] = 1 # gaussian-smooth the dirac, resulting in a gaussian filter mask return fi.</description>
+    </item>
+    <item>
+      <title>gelsight成像与仿真&#43;实际数据拟合方法</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight%E6%88%90%E5%83%8F%E4%B8%8E%E4%BB%BF%E7%9C%9F&#43;%E5%AE%9E%E9%99%85%E6%95%B0%E6%8D%AE%E6%8B%9F%E5%90%88%E6%96%B9%E6%B3%95-ef28dd2ddd0c4027a663280bfe9bf382/</link>
+      <pubDate>Sat, 21 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/gelsight%E6%88%90%E5%83%8F%E4%B8%8E%E4%BB%BF%E7%9C%9F&#43;%E5%AE%9E%E9%99%85%E6%95%B0%E6%8D%AE%E6%8B%9F%E5%90%88%E6%96%B9%E6%B3%95-ef28dd2ddd0c4027a663280bfe9bf382/</guid>
+      <description>gelsight成像与仿真+实际数据拟合方法 论文原文: Generation of GelSight Tactile Images for Sim2Real Learning 项目源码： https://danfergo.github.io/gelsight-simulation 1. 引言 为什么机器人用到触觉传感器： 视觉传感器在遮挡、不同光照条件下，效果不佳； 机器人操作环境中，避免不了出现手臂或手掌遮挡目标的情况； 为什么要做sim2real： 节省时间与硬件资源，在仿真中训练，在实际环境中微调； rl类型训练需要试错积累，防止造成硬件损坏； gelsight 这种visual-based 触觉传感器优势在哪： 相比于传统使用触觉单元的触觉传感器，其分辨率更高； 如何为gelsight做sim2real： real world下，gelsight通过内部相机捕获膜形变的形式来回传触觉数据； 在gazebo1仿真中，用深度相机捕获接触物体表面深度图，再近似形变为膜形变的高度图： 使用Bivariate Gaussian filtering（双变量高斯滤波） 使用Phong着色模型渲染传感器内部照明 方法评估与效果： 评估方法：评估个毛,直接用 可以扩展到unity和pybullet环境下；
+2. gelsight工作原理具体说明 实际环境下sensor的工作原理：
+组成部分： 凝胶、透明硬玻璃板、相机、内部照明设备； 相机监测凝胶形变，产生触觉图片； 内部照明有单光类型，也有RGB类型； 仿真下sensor通过 Phong着色模型渲染，可以选定基础图片颜色； 3. 论文中用到的仿真模型说明 仿真中sensor的数据采集原理：
+直接从深度图生成触觉图像，流程如下图所示：
+1.1 elastomer的高度图基于深度相机捕获的深度图生成（也就是形变图），
+1.2 再通过Gaussian 滤波平滑化，
+2.1 计算表明法线为离散导数，
+2.2 再应用Phong模型进行着色（计算内部照明）；
+弹性体（凝胶）的高度图如何从深度图转换而来： 在仿真中，把一个基于结构光的深度相机放在实际中RGB相机位置上，如下图：
+仿真中直接获取弹性体与物体的接触点深度； 根据弹性体能够接触到的最大深度$d_{max}$，对深度图做阈值化处理，得到形变高度图$H_0$； $H_0(x, y)=\left{ \begin{aligned} D(x,y) &amp;amp; &amp;amp;ifD(x,y)&amp;lt;=D_{max} \ d_{max} &amp;amp; &amp;amp; otherwise \ \end{aligned} \right.</description>
+    </item>
+    <item>
+      <title>自建触觉数据采集功能包</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/</link>
+      <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/</guid>
+      <description>tactile_data_collector_ws设置 Tags: Gazebo, ROS Person: COO Ni
+gazebo_tactile_data_simulator功能包 这个功能包主要完成 ur10e arm和 gelsight在 gazebo中的连通, 末端位姿控制与触觉数据采集；
+直接上结论:
+默认需要在同workspace src目录下放置 universal_robot 功能包和 gelsight_description 功能包；
+1. 首先将gelsight模型搭载到ur10e的末端 tool0 关节, 修改ur_gazebo下的urdf/ur_macro.xacro文件如下: &amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt; &amp;lt;robot xmlns:xacro=&amp;#34;http://wiki.ros.org/xacro&amp;#34;&amp;gt; &amp;lt;!--前面都跳过 --&amp;gt; &amp;lt;xacro:include filename=&amp;#34;$(find ur_description)/urdf/inc/ur_macro.xacro&amp;#34;/&amp;gt; &amp;lt;!-- Add the gelsight on the end of the robot --&amp;gt; &amp;lt;xacro:include filename=&amp;#34;$(find gelsight_description)/urdf/gelsight2014.xacro&amp;#34;/&amp;gt; &amp;lt;joint name=&amp;#34;hook_gelsight_printer&amp;#34; type=&amp;#34;fixed&amp;#34;&amp;gt; &amp;lt;origin xyz=&amp;#34;0 0.007 0.005&amp;#34; rpy=&amp;#34;0 0 ${pi/2}&amp;#34;/&amp;gt; &amp;lt;parent link=&amp;#34;tool0&amp;#34;/&amp;gt; &amp;lt;child link=&amp;#34;gelsight_base&amp;#34;/&amp;gt; &amp;lt;/joint&amp;gt; &amp;lt;!--后面也都跳过,不需要修改 --&amp;gt; &amp;lt;/xacro:macro&amp;gt; &amp;lt;/robot&amp;gt; 2. 写launch文件, 启动ur10e_bringup.</description>
+    </item>
+    <item>
+      <title>Robotiq140——ros功能包实机调试</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/</link>
+      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/</guid>
+      <description>Robotiq140——ros功能包实机调试 Person: COO Ni
+1. 获取kinect版本的robotiq功能包，本地编译通过，记得安装joint_state_publisher_gui； 2. 使用usb联通设备开始调试： 需要为usb修改配置串口，首先查看Robotiq设备在系统中串口显示； 默认会显示为 ttyUSB0 串口，针对此串口修改即可： 参考的ros官网教程：http://wiki.ros.org/robotiq/Tutorials/Control of a 2-Finger Gripper using the Modbus RTU protocol (ros kinetic and newer releases) 需要给串口读写操作，建议将设备用户添加到dialout group，确保永久读写权限 sudo usermod -a -G dialout $username sudo usermod -a -G dialout the_computer_user_name #查看连接的串口 dmesg | grep tty #输出如下 [ 0.004000] console [tty0] enabled [ 1.781526] 00:05: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A [421151.583450] usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0 [434351.</description>
+    </item>
+    <item>
+      <title>realsense内参获取方法</title>
+      <link>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/realsense%E5%86%85%E5%8F%82%E8%8E%B7%E5%8F%96-38e13bb40a12400d9e6698826a0bf08f/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/realsense%E5%86%85%E5%8F%82%E8%8E%B7%E5%8F%96-38e13bb40a12400d9e6698826a0bf08f/</guid>
+      <description>realsense内参获取 Person: COO Ni
+1. realsense内参标定: 需要先安装camera_calibration功能包，直接默认装ros的就行 需要下载并打印一个标定板（注意选定交叉点个数和每个正方块的大小） 相机标定： roslaunch realsense2_camera rs_camera.launch #先启相机 rosrun camera_calibration cameracalibarator.py --size nxm ----square 0.027 image:=/camera/color/image_raw camera:=/camera_color_optical_frame --no-service-check #要注意换掉交叉点个数和正方块大小参数 生成的内参数据放到file://$(find realsense2_camera)/calibration/ 下的realsense_rgb.yaml 文件内（执行会告诉你内参数据在哪，标定用的图片也会同步存储）； 这里要解决一个ubuntu自带pip版本过低，需要进一步更新的问题，解决方案后面再补 标定板pdf下载链接 有realsense产品可以直接拿官方驱动获取内参: rs-sensor-control 命令可以启动参数获取, 注意需要正确连接realsense； 按照步骤取所需的参数即可； </description>
+    </item>
+  </channel>
+</rss>

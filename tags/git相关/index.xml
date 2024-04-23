@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git相关 on QJJ-笔记</title>
+    <link>https://nicetomeetuuu.github.io/tags/git%E7%9B%B8%E5%85%B3/</link>
+    <description>Recent content in git相关 on QJJ-笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 10 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nicetomeetuuu.github.io/tags/git%E7%9B%B8%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git使用</title>
+      <link>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-94eadd4043184fb18d4314cb6703e492/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-94eadd4043184fb18d4314cb6703e492/</guid>
+      <description>Git使用教程 1. 新建远程仓库与本地仓库并建立连接 1.1 在github上创建远程仓库： 不管是fork还是自己建立都可以；
+1.2 在本地新建路径，与远程仓库建立连接： 设定一下在当前设备的使用人昵称与邮箱地址：
+开发阶段这个步骤很重要，通过log可以看到每个版本提交人的具体信息，以支持分布式的系统控制。 git config --global user.name &amp;#34;qjj&amp;#34; git config --global user.email &amp;#34;rhysqiuj@gmail.com&amp;#34; 新建代码文件夹，并声明为git仓库：
+mkdir my_repo cd my_repo git init #声明完毕会出现.git文件夹，里面包含远程连接需要的信息 在本路径下新建文件并提交到本地仓库内：
+touch readme.md vim readme.md #通过vim为readme添加内容 git commit -m &amp;#34;upload a readme.md file&amp;#34; #commit命令执行伴随-m参数，设定本次提交的修改之处，开发的时候需要多次修改 可以使用git status查看工作区的状态，使用git diff查看修改内容：
+rhysqiu@RhysQiudeMacBook-Air learngit % git status On branch main nothing to commit, working tree clean 修改一下readme.txt文件，看看会发生什么： vim readme.txt #在vim中为readme文件添加一段话“I&amp;#39;m a student study in DLUT.” git status #output On branch main Changes not staged for commit: (use &amp;#34;git add &amp;lt;file&amp;gt;.</description>
+    </item>
+    <item>
+      <title>hugo&#43;github搭建静态个人网站</title>
+      <link>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/hugo&#43;github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-ad1a5fb74e544849875d20b79d6c7c3c/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/hugo&#43;github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-ad1a5fb74e544849875d20b79d6c7c3c/</guid>
+      <description>hugo+github搭建静态个人网站 1. 概念与准备工作 Hugo是利用go语言写的静态网站生成器，把markdown文件转成html； 需要维护两个仓库： 一个保存markdown文件与图片等； 另一个保存由hugo生成的静态html； 需要前期注册github账号，并在账户中添加本地ssh-key信息 需要一个趁手的编译器； 2. hugo安装 我使用macOS直接拿安装包管理器brew安装：
+brew install hugo 检查安装效果：
+hugo version 3. 创建github仓库： 3.1 先创建一个保存markdown文件和图片的仓库 名字随便起； 设置public，创建个readme； 3.2 创建静态页面仓库 仓库名称必须使用特殊格式： .github.io. 其中是github昵称； 设置public，创建readme（会默认选定main作为主分支）； 4. 使用hugo创建网站 创建网站文件夹：
+hugo new site &amp;lt;your_site_name&amp;gt; 创建后在当前目录生成一个文件夹，cd进去可以发现文件列表如下：
+其中，关键文件夹是content、public与themes content保存博客源文件； public内保存hugo生成的静态网站； themes是自建或下载的网页主题； hugo site放到github上： 未完待续。。。 </description>
+    </item>
+  </channel>
+</rss>

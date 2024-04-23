@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>自建触觉数据采集功能包</title>
+    <meta name="description" content="在gazebo仿真下的gelsight数据采集环境">
+    <meta name="keywords" content='blog, gokarna, hugo, ros相关'>
+
+    <meta property="og:url" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="自建触觉数据采集功能包">
+    <meta property="og:description" content="在gazebo仿真下的gelsight数据采集环境">
+    <meta property="og:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+    <meta property="og:image:secure_url" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="自建触觉数据采集功能包">
+    <meta name="twitter:description" content="在gazebo仿真下的gelsight数据采集环境">
+    <meta property="twitter:domain" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/">
+    <meta property="twitter:url" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/">
+    <meta name="twitter:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    
+    <link rel="canonical" href="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/tactile_data_collector_ws%E8%AE%BE%E7%BD%AE-5e0e37996a9844d5915e47fa74152e0b/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.02dacf7714c2645136fbf75dd7d16fbc0b7d770133dac770c160e51a50724022.js" integrity="sha256-AtrPdxTCZFE2&#43;/dd19FvvAt9dwEz2sdwwWDlGlByQCI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nicetomeetuuu.github.io/">
+                <img src='/pictures/xinzhizhu.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nicetomeetuuu.github.io/">QJJ-笔记</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>自建触觉数据采集功能包</h1>
+        <small role="doc-subtitle">在gazebo仿真下的gelsight数据采集环境</small>
+        <p class="post-date">2023年10月16日
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/blog">blog</a></li>
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3">ros相关</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="tactile_data_collector_ws设置">tactile_data_collector_ws设置</h1>
+<p>Tags: Gazebo, ROS
+Person: COO Ni</p>
+<h1 id="gazebo_tactile_data_simulator功能包">gazebo_tactile_data_simulator功能包</h1>
+<p>这个功能包主要完成 <strong>ur10e arm和 gelsight在 gazebo中的连通, 末端位姿控制与触觉数据采集</strong>；</p>
+<p><strong>直接上结论:</strong></p>
+<p>默认需要在同workspace src目录下放置 universal_robot 功能包和 gelsight_description 功能包；</p>
+<h2 id="1-首先将gelsight模型搭载到ur10e的末端-tool0-关节-修改ur_gazebo下的urdfur_macroxacro文件如下">1. 首先将gelsight模型搭载到ur10e的末端 tool0 关节, 修改ur_gazebo下的urdf/ur_macro.xacro文件如下:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;robot</span> <span style="color:#a6e22e">xmlns:xacro=</span><span style="color:#e6db74">&#34;http://wiki.ros.org/xacro&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--前面都跳过 --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;xacro:include</span> <span style="color:#a6e22e">filename=</span><span style="color:#e6db74">&#34;$(find ur_description)/urdf/inc/ur_macro.xacro&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- Add the gelsight on the end of the robot --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;xacro:include</span> <span style="color:#a6e22e">filename=</span><span style="color:#e6db74">&#34;$(find gelsight_description)/urdf/gelsight2014.xacro&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;joint</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;hook_gelsight_printer&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;fixed&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;origin</span> <span style="color:#a6e22e">xyz=</span><span style="color:#e6db74">&#34;0 0.007 0.005&#34;</span> <span style="color:#a6e22e">rpy=</span><span style="color:#e6db74">&#34;0 0 ${pi/2}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;parent</span> <span style="color:#a6e22e">link=</span><span style="color:#e6db74">&#34;tool0&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;child</span> <span style="color:#a6e22e">link=</span><span style="color:#e6db74">&#34;gelsight_base&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/joint&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--后面也都跳过,不需要修改 --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/xacro:macro&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/robot&gt;</span>
+</span></span></code></pre></div><h2 id="2-写launch文件-启动ur10e_bringuplaunch-及控制节点等">2. 写launch文件, 启动ur10e_bringup.launch 及控制节点等</h2>
+<p>launch文件1: arm_bringup.launch;</p>
+<p>launch文件2: tactile_data_sim_world.launch</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;launch&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;gazebo_world&#34;</span> <span style="color:#a6e22e">default=</span><span style="color:#e6db74">&#34;$(find gazebo_tactile_data_simulator)/worlds/tactile_data_sim.world&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 在gazebo下, 加载ur10e机械臂 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;$(find ur_gazebo)/launch/ur10e_bringup.launch&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;gazebo_world&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;$(arg gazebo_world)&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;paused&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/include&gt;</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/launch&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;launch&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;sim&#34;</span> <span style="color:#a6e22e">default=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 修改gazebo的pause状态 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;node</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;start_gazebo_sim&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">pkg=</span><span style="color:#e6db74">&#34;gazebo_tactile_data_simulator&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;start_gazebo.py&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 启动ur10e机械臂控制节点 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;$(find ur10e_moveit_config)/launch/moveit_planning_execution.launch&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;arg</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;sim&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;$(arg sim)&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/include&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;$(find gazebo_tactile_data_simulator)/launch/moveit_rviz.launch&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 起gelsight tactile data 渲染节点 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;group</span> <span style="color:#a6e22e">if=</span><span style="color:#e6db74">&#34;$(arg sim)&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;node</span>   <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;gelsight_sim&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">pkg=</span><span style="color:#e6db74">&#34;gelsight_gazebo&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;gelsight_driver.py&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/group&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/launch&gt;</span>
+</span></span></code></pre></div><p>这里调用了 gelsight_driver节点, 节点通过深度图拟合触觉数据 pub出来, 后面要订阅并存储触觉数据</p>
+<h2 id="3-新版ur功能包使用pid控制关节-导致gazebo-load-model-会发生-模型先因重力偏转-后上力而改变初始位姿的现象-以及-末端挂载传感器质量过大-末端振动现象">3. 新版ur功能包使用pid控制关节, 导致gazebo load model 会发生 模型先因重力偏转, 后上力而改变初始位姿的现象 以及 末端挂载传感器质量过大 末端振动现象；</h2>
+<p>解决办法:</p>
+<ul>
+<li>修改gelsight_description中模型描述文件, 将其质量惯性等设置为0.001；</li>
+<li>在ur10e_bringup.launch 中, 以paused模式启动, 防止重力先于力矩作用；</li>
+<li>写一个节点 修改 gazebo的 pause参数, 在ur机械臂的运动前(tactile_data_sim_world.launch最先调用)；</li>
+<li>设置机械臂运动到home位姿, 便于下一步规划</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--模型描述文件自己改去, 注意有四处mass需要修改 --&gt;</span>
+</span></span></code></pre></div><p><strong>用于start gazebo的节点内容如下:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> rospy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> moveit_commander
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> geometry_msgs.msg <span style="color:#f92672">import</span> Pose, PoseStamped
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> std_srvs.srv <span style="color:#f92672">import</span> Empty
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> std_msgs.msg <span style="color:#f92672">import</span> Float64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_gazebo_pause</span>(pause):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> pause:
+</span></span><span style="display:flex;"><span>        service_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/gazebo/pause_physics&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        service_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/gazebo/unpause_physics&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>wait_for_service(service_name)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        change_pause <span style="color:#f92672">=</span> rospy<span style="color:#f92672">.</span>ServiceProxy(service_name, Empty)
+</span></span><span style="display:flex;"><span>        change_pause()
+</span></span><span style="display:flex;"><span>        rospy<span style="color:#f92672">.</span>loginfo(<span style="color:#e6db74">&#34;Gazebo pause status set to: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(pause))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> rospy<span style="color:#f92672">.</span>ServiceException <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        rospy<span style="color:#f92672">.</span>logerr(<span style="color:#e6db74">&#34;Failed to call Gazebo pause service: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(e))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_arm_joint_position</span>(joint_name, position):
+</span></span><span style="display:flex;"><span>    topic_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/arm_controller/</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">_position_controller/command&#39;</span><span style="color:#f92672">.</span>format(joint_name)
+</span></span><span style="display:flex;"><span>    pub <span style="color:#f92672">=</span> rospy<span style="color:#f92672">.</span>Publisher(topic_name, Float64, queue_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>    pub<span style="color:#f92672">.</span>publish(position)
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>loginfo(<span style="color:#e6db74">&#34;Set joint </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> position to: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(joint_name, position))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Move_to_home</span>():
+</span></span><span style="display:flex;"><span>    arm <span style="color:#f92672">=</span> moveit_commander<span style="color:#f92672">.</span>MoveGroupCommander(<span style="color:#e6db74">&#39;manipulator&#39;</span>)
+</span></span><span style="display:flex;"><span>    end_effector_link <span style="color:#f92672">=</span> arm<span style="color:#f92672">.</span>get_end_effector_link()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    reference_frame <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;base_link&#39;</span>
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>set_pose_reference_frame(reference_frame)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>allow_replanning(<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>set_goal_position_tolerance(<span style="color:#ae81ff">0.001</span>)
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>set_goal_orientation_tolerance(<span style="color:#ae81ff">0.01</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>set_max_acceleration_scaling_factor(<span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>set_max_velocity_scaling_factor(<span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>set_named_target(<span style="color:#e6db74">&#39;manipulator_home&#39;</span>)
+</span></span><span style="display:flex;"><span>    arm<span style="color:#f92672">.</span>go()
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>init_node(<span style="color:#e6db74">&#39;external_node&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 暂缓3s，等待gazebo仿真环境启动</span>
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 设置暂停属性为False，即启动仿真</span>
+</span></span><span style="display:flex;"><span>    set_gazebo_pause(<span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 暂缓1s, 等待力矩与关节角度稳定</span>
+</span></span><span style="display:flex;"><span>    Move_to_home()
+</span></span></code></pre></div><h2 id="4-调整spawn_model为机械臂添加初始关节位姿和拿到touch数据的目标物体">4. 调整spawn_model为机械臂添加初始关节位姿和拿到touch数据的目标物体</h2>
+<p>调整xacro文件, 设定可修改参数, 自动调用并集成ur机械臂和gelsight传感器以及目标物体；</p>
+<p>(为了防止物体因碰撞运动, 将其设定为关节类型物体, 连接在baselink上)</p>
+<ul>
+<li>解决办法:
+<ul>
+<li>通过xacro文件层层递进传递参数, 这里为了方便调整, <strong>后期需要修改launch文件内容</strong>:</li>
+<li><strong>修改后再添加, 先完成后面部分内容.</strong></li>
+</ul>
+</li>
+</ul>
+<p>调整发现深度相机的点云无法对齐, 需要找到一个正确的frame进行映射, 深度图像由gelsight_camera节点发布, 理论上应该在该link处定义一个朝向正确的link作为点云图像的对齐基准.</p>
+<ul>
+<li>
+<p>解决办法:</p>
+<ul>
+<li>这里在gelsight_camera.xacro文件中, 设定一个link命名为gelsight_link, 用于对齐点云；</li>
+<li>rpy分别代表xyz三个轴上旋转角, 在rviz中, 红x绿y蓝z, 为右手坐标系, 逆时针旋转为正向旋转角. (基于自身坐标系)</li>
+<li>将深度图映射到旋转link上即可, 代码如下(在z轴上还是有点偏移, 可能是<strong>相机内参没有设置好,</strong> 后面读数据再调整一下):</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;robot</span> <span style="color:#a6e22e">xmlns:xacro=</span><span style="color:#e6db74">&#34;http://wiki.ros.org/xacro&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;xacro:macro</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;gelsight_camera&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;link</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#39;gelsight_camera&#39;</span><span style="color:#f92672">&gt;&lt;/link&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;link</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#39;gelsight_link&#39;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- cannot find the gelsight_link, so we set new gelsight_link as the cloud frame --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;joint</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#39;gelsight_link_to_camera&#39;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#39;fixed&#39;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">&lt;!-- ${pi} --&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;parent</span> <span style="color:#a6e22e">link=</span><span style="color:#e6db74">&#34;gelsight_camera&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;child</span> <span style="color:#a6e22e">link=</span><span style="color:#e6db74">&#34;gelsight_link&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;origin</span> <span style="color:#a6e22e">xyz=</span><span style="color:#e6db74">&#34;0 0 0&#34;</span> <span style="color:#a6e22e">rpy=</span><span style="color:#e6db74">&#34;${-pi/2} 0.0 ${-pi/2}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/joint&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;gazebo</span> <span style="color:#a6e22e">reference=</span><span style="color:#e6db74">&#34;gelsight_camera&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;sensor</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;depth&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;gelsight_camera_sensor&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;always_on&gt;</span>1<span style="color:#f92672">&lt;/always_on&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;update_rate&gt;</span>30.0<span style="color:#f92672">&lt;/update_rate&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;visualize&gt;</span>1<span style="color:#f92672">&lt;/visualize&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;topic&gt;</span>/depth_camera<span style="color:#f92672">&lt;/topic&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;camera</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;head&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--                    &lt;horizontal_fov&gt;1.04719755&lt;/horizontal_fov&gt;--&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;horizontal_fov&gt;</span>0.5<span style="color:#f92672">&lt;/horizontal_fov&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;image&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;width&gt;</span>640<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;height&gt;</span>480<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;format&gt;</span>R8G8B8<span style="color:#f92672">&lt;/format&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;/image&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;clip&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;near&gt;</span>0.0001<span style="color:#f92672">&lt;/near&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;far&gt;</span>300<span style="color:#f92672">&lt;/far&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;/clip&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;depth_camera&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&lt;output&gt;</span>depths<span style="color:#f92672">&lt;/output&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;/depth_camera&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;/camera&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;plugin</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;gelsight_link_controller&#34;</span> <span style="color:#a6e22e">filename=</span><span style="color:#e6db74">&#34;libgazebo_ros_openni_kinect.so&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;baseline&gt;</span>0.2<span style="color:#f92672">&lt;/baseline&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;alwaysOn&gt;</span>true<span style="color:#f92672">&lt;/alwaysOn&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;updateRate&gt;</span>30.0<span style="color:#f92672">&lt;/updateRate&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;cameraName&gt;</span>gelsight_ir<span style="color:#f92672">&lt;/cameraName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;imageTopicName&gt;</span>/gelsight/image/image_raw<span style="color:#f92672">&lt;/imageTopicName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;cameraInfoTopicName&gt;</span>/gelsight/depth/camera_info<span style="color:#f92672">&lt;/cameraInfoTopicName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;depthImageTopicName&gt;</span>/gelsight/depth/image_raw<span style="color:#f92672">&lt;/depthImageTopicName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;depthImageInfoTopicName&gt;</span>/gelsight/depth/camera_info<span style="color:#f92672">&lt;/depthImageInfoTopicName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;pointCloudTopicName&gt;</span>/gelsight/depth/points<span style="color:#f92672">&lt;/pointCloudTopicName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;frameName&gt;</span>gelsight_link<span style="color:#f92672">&lt;/frameName&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">&lt;!-- &lt;frameName&gt;gelsight_base&lt;/frameName&gt; --&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;pointCloudCutoff&gt;</span>0.0<span style="color:#f92672">&lt;/pointCloudCutoff&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;distortionK1&gt;</span>0<span style="color:#f92672">&lt;/distortionK1&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;distortionK2&gt;</span>0<span style="color:#f92672">&lt;/distortionK2&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;distortionK3&gt;</span>0<span style="color:#f92672">&lt;/distortionK3&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;distortionT1&gt;</span>0<span style="color:#f92672">&lt;/distortionT1&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;distortionT2&gt;</span>0<span style="color:#f92672">&lt;/distortionT2&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;CxPrime&gt;</span>0<span style="color:#f92672">&lt;/CxPrime&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;Cx&gt;</span>0<span style="color:#f92672">&lt;/Cx&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;Cy&gt;</span>0<span style="color:#f92672">&lt;/Cy&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;focalLength&gt;</span>0<span style="color:#f92672">&lt;/focalLength&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;hackBaseline&gt;</span>0<span style="color:#f92672">&lt;/hackBaseline&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;/plugin&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/sensor&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/gazebo&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/xacro:macro&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/robot&gt;</span>
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="5-写python版本节点为了避免代码异构-这部分写一个pose_publisher发布数据采集目标位姿">5. 写python版本节点(为了避免代码异构), 这部分写一个pose_publisher发布数据采集目标位姿:</h2>
+<h3 id="在scripts路径下新建-move_target_publisherpy-文件">在scripts路径下新建 move_target_publisher.py 文件:</h3>
+<ul>
+<li>实例化一个publisher, 方便后期RL训练直接调用</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> rospy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> moveit_commander
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> geometry_msgs.msg <span style="color:#f92672">import</span> Pose
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    rospy<span style="color:#f92672">.</span>init_node(<span style="color:#e6db74">&#39;move_target_publisher&#39;</span>)
+</span></span><span style="display:flex;"><span>    pub <span style="color:#f92672">=</span> rospy<span style="color:#f92672">.</span>Publisher(<span style="color:#e6db74">&#39;/move_target/pose&#39;</span>, Pose, queue_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    target_pose <span style="color:#f92672">=</span> Pose()
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>position<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.86</span>
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>position<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.36</span>
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>position<span style="color:#f92672">.</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.34</span>
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.707</span>
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.707</span>
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    target_pose<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    target_pose1 <span style="color:#f92672">=</span> Pose()
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>position<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.7</span>
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>position<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.37</span>
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>position<span style="color:#f92672">.</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.15</span>
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.707</span>
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.707</span>
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    target_pose1<span style="color:#f92672">.</span>orientation<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> rospy<span style="color:#f92672">.</span>is_shutdown():
+</span></span><span style="display:flex;"><span>       input(<span style="color:#e6db74">&#34;Press Enter to continue...&#34;</span>)
+</span></span><span style="display:flex;"><span>       pub<span style="color:#f92672">.</span>publish(target_pose)
+</span></span><span style="display:flex;"><span>       rospy<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.5</span>)
+</span></span></code></pre></div><h2 id="6-根据gelsight_simulation下的data_conllectionpy-写tactile-data-collectorpy">6. 根据gelsight_simulation下的data_conllection.py, 写tactile data collector.py</h2>
+<h3 id="首先需要看一下成像原理与sim2real具体方法">首先需要看一下成像原理与sim2real具体方法:</h3>
+<p><a href="tactile_data_collector_ws%E8%AE%BE%E7%BD%AE%205e0e37996a9844d5915e47fa74152e0b/gelsight%E6%88%90%E5%83%8F%E4%B8%8E%E4%BB%BF%E7%9C%9F+%E5%AE%9E%E9%99%85%E6%95%B0%E6%8D%AE%E6%8B%9F%E5%90%88%E6%96%B9%E6%B3%95%20ef28dd2ddd0c4027a663280bfe9bf382.md">gelsight成像与仿真+实际数据拟合方法</a></p>
+<ul>
+<li>
+<p>论文中提到形变是通过深度图经过2D Gaussian filter 平滑化得到的，<strong>不确定是否可以直接使用depth中读到的</strong>。</p>
+</li>
+<li>
+<p>tactile_data_<a href="http://collector.py">collector.py</a> 预计功能:</p>
+<ul>
+<li>需要根据当前采集坐标, 沿tool0的z轴运动, <strong>采集多张数据</strong>；</li>
+<li>或者按照当前最大深度与最小深度区间<strong>过滤点云数量</strong>, 数量达标则直接存储当前gelsight_base位姿+截取的点云数据+触觉图像；</li>
+</ul>
+</li>
+<li>
+<p>功能实现具体要做的:</p>
+<ul>
+<li>设计回调函数, 通过订阅RL节点 pub出来的 gelsight_base末端位姿, 调用<strong>反解算法移动到目标点</strong>；</li>
+<li>末端位姿<strong>步进式数据采集</strong>, 点云数量到达阈值才存储；</li>
+<li>触觉图像采集, 已经给出初始的图像, 后面可能需要<strong>添加褶皱噪声</strong>方便sim2real训练；</li>
+<li>局部点云采集, 根据截断深度采集当前点云数据, 可能需要转换矩阵转换到base link下:
+<ul>
+<li>坐标系间的变换矩阵:
+<ul>
+<li>
+<p>可以通过transforms3d, 订阅tf下的左边转换关系, 计算得到转换矩阵</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#依赖包: transforms3d</span>
+</span></span><span style="display:flex;"><span>pip install transforms3d
+</span></span></code></pre></div></li>
+<li>
+<p>将当前已达到合理点云数量的gelsight_link位姿存储, 并存储tactile_image和point_cloud；</p>
+</li>
+<li>
+<p>再额外写一个转换脚本, 根据gelsight_link的pose和point_cloud数据, 计算转换矩阵并将点云转换到base_link下, 这样两个数据都采集到了；</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>tactile image获得方式<strong>并非只通过截取深度实现</strong>, 根据其源码可以分析实现方式如下:</p>
+<ul>
+<li>
+<p>这里需要分析一下gelsight_driver.py脚本如何发布tactile_image:</p>
+<p><a href="tactile_data_collector_ws%E8%AE%BE%E7%BD%AE%205e0e37996a9844d5915e47fa74152e0b/gelsight_driver%20py%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%20aee450b879884d5fa5922b4576aba811.md">gelsight_driver.py文件解析</a></p>
+</li>
+</ul>
+<ol>
+<li>
+<p>通过文件定义可以看到:</p>
+<ol>
+<li>凝胶厚度定义为0.004, 最小深度为0.026, 只需要截取 0.026-0.004区间内的点云数据；</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>px2m_ratio <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.4347826087e-05</span>
+</span></span><span style="display:flex;"><span>elastomer_thickness <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.004</span>
+</span></span><span style="display:flex;"><span>min_depth <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.026</span>  <span style="color:#75715e"># distance from the image sensor to the rigid glass outer surface</span>
+</span></span><span style="display:flex;"><span>texture_sigma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.00001</span>
+</span></span></code></pre></div></li>
+</ol>
+</li>
+</ul>
+<h3 id="tactile_data_collectorpy如下">tactile_data_collector.py如下:</h3>
+<h3 id="主要功能">主要功能:</h3>
+<ol>
+<li>采集tactile_image；</li>
+<li>采集并规范化 camera_link 下的 点云数据；</li>
+<li>订阅pose_publisher, 移动到该位姿并执行data_collect()；</li>
+</ol>
+<h3 id="现存问题">现存问题:</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 机械臂末端反解规划, x, y轴精度可达0.5mm, z轴精度为3mm, 无法达成步进采集效果;</li>
+<li><input checked="" disabled="" type="checkbox"> 由于转轴上角度也有误差, 持续的反解由于z轴与转角误差, 会导致末端无法按照直线运动；</li>
+<li><input disabled="" type="checkbox"> 数据采集函数执行问题, 跟不上point_cloud回调函数刷新率, 导致移动位置有问题；</li>
+</ul>
+<h3 id="解决办法">解决办法:</h3>
+<ol>
+<li>仿真中z轴误差由重力引起, 采集数据不需要重力, 直接置零；
+<ol>
+<li>置零办法是将启动时选定的world文件内部 <!-- raw HTML omitted --> 条目由 0 0 -9.8  置为 0 0 0；</li>
+</ol>
+</li>
+<li>重力删除后, 转轴误差也很小, 没有问题；</li>
+<li>回调函数只用于修改初始点云, 在每次调用步进之前执行点云筛选, 在运动前保证获取稳定的点云数据；</li>
+</ol>
+<h2 id="7-环境控制节点-env_controllerpy">7. 环境控制节点 env_controller.py</h2>
+<h3 id="本节点主要用于切换环境模型-为机械臂发布采集位姿与控制信号">本节点主要用于切换环境模型, 为机械臂发布采集位姿与控制信号；</h3>
+<ol>
+<li>实现了在gazebo下导入或者导出sdf和urdf类型模型的功能；</li>
+<li>实现了为监听节点发布目标位姿的功能；</li>
+</ol>
+<h3 id="现存问题-1">现存问题:</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> gazebo下模型会因无重力而在受到碰撞后匀速飘走；</li>
+<li><input checked="" disabled="" type="checkbox"> 采集功能还有待完善, 速度过慢, 是个问题；</li>
+<li><input checked="" disabled="" type="checkbox"> 点云深度最小值有问题,需要过滤；</li>
+<li><input checked="" disabled="" type="checkbox"> 连续控制理论上应该使用service通信模式, 而非topic模式；</li>
+<li><input disabled="" type="checkbox"> gazebo2rviz中marker并不能实现避障, 且marker坐标不正确；</li>
+</ul>
+<h3 id="解决办法-1">解决办法:</h3>
+<ol>
+<li>
+<p>gazebo中导入模型可以<strong>将  static  属性设置为 true</strong> , 这样就不会因外力干扰而产生运动了；</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;sdf</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;1.5&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;model</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;abc&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;static&gt;</span>true<span style="color:#f92672">&lt;/static&gt;</span>  <span style="color:#75715e">&lt;!--这里即为static声明--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;link</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;link&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;pose&gt;</span>0 0 0.036 0 0 0<span style="color:#f92672">&lt;/pose&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;inertial&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;mass&gt;</span>0.5167<span style="color:#f92672">&lt;/mass&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;inertia&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;ixx&gt;</span>0.0008611666666666669<span style="color:#f92672">&lt;/ixx&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;ixy&gt;</span>0<span style="color:#f92672">&lt;/ixy&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;ixz&gt;</span>0<span style="color:#f92672">&lt;/ixz&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;iyy&gt;</span>0.0008611666666666669<span style="color:#f92672">&lt;/iyy&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;iyz&gt;</span>0<span style="color:#f92672">&lt;/iyz&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;izz&gt;</span>0.0008611666666666669<span style="color:#f92672">&lt;/izz&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/inertia&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/inertial&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;collision</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;collision&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;geometry&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;mesh&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;uri&gt;</span>model://abc/meshes/abc.dae<span style="color:#f92672">&lt;/uri&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;scale&gt;</span>0.5 0.5 0.5<span style="color:#f92672">&lt;/scale&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/mesh&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/geometry&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;surface&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;friction&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;torsional&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;coefficient&gt;</span>1.0<span style="color:#f92672">&lt;/coefficient&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;use_patch_radius&gt;</span>0<span style="color:#f92672">&lt;/use_patch_radius&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;surface_radius&gt;</span>0.01<span style="color:#f92672">&lt;/surface_radius&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/torsional&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/friction&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/surface&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/collision&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;visual</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;visual&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;geometry&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;mesh&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;uri&gt;</span>model://abc/meshes/abc.dae<span style="color:#f92672">&lt;/uri&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;scale&gt;</span>0.5 0.5 0.5<span style="color:#f92672">&lt;/scale&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/mesh&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/geometry&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/visual&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/link&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/model&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/sdf&gt;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>采集速度提升上想直接运动到相距最近的物体表面, 不过这种实现方式对初始的探索位姿要求较高；</p>
+</li>
+<li>
+<p>点云深度最小值直接在点云集合内获取, 暂时未发现问题</p>
+</li>
+<li>
+<p>Service通信可以让客户端了解当前服务端是否成功实现服务, 防止重复请求相同的服务；</p>
+</li>
+<li>
+<p>放弃gazebo2rviz节点使用, 直接拿moveit_commander命令添加dae类型的模型到世界中</p>
+<ul>
+<li>遇到问题:
+<ul>
+<li>中心点问题, dae模型和sdf模型的中心点不是对齐的, 导致物体位置有问题；</li>
+</ul>
+</li>
+<li>解决办法:
+<ul>
+<li>追本溯源还是要让机械臂规划到球面位姿的过程中不与目标物体产生碰撞, 那么可以在规划到球面位姿的时候加载一个长方体替代目标物体, 在开始采集后将该长方体移除, 也可实现想要的效果；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="debug记录从异步停止机械臂运动版本开始记录">debug记录(从异步停止机械臂运动版本开始记录):</h2>
+<h3 id="20240318">20240318:</h3>
+<ol>
+<li>机械臂在地卡尔空间坐标间规划路径, maxaccelerate和maxvelocity设置</li>
+<li>现在异步停止机械臂有问题，gazebo中未实现move过程中异步stop的操作，现回溯到最开始的工作模式。</li>
+</ol>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 一只正在学技术的菜鸟</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

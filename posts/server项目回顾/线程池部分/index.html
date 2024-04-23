@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>线程池在webserver中的实现</title>
+    <meta name="description" content="Linux下轻量级服务器实现记录-线程池部分">
+    <meta name="keywords" content='blog, gokarna, hugo, C&#43;&#43;项目, webserver轻量级服务器'>
+
+    <meta property="og:url" content="https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%83%A8%E5%88%86/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="线程池在webserver中的实现">
+    <meta property="og:description" content="Linux下轻量级服务器实现记录-线程池部分">
+    <meta property="og:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+    <meta property="og:image:secure_url" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="线程池在webserver中的实现">
+    <meta name="twitter:description" content="Linux下轻量级服务器实现记录-线程池部分">
+    <meta property="twitter:domain" content="https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%83%A8%E5%88%86/">
+    <meta property="twitter:url" content="https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%83%A8%E5%88%86/">
+    <meta name="twitter:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    
+    <link rel="canonical" href="https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%83%A8%E5%88%86/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.02dacf7714c2645136fbf75dd7d16fbc0b7d770133dac770c160e51a50724022.js" integrity="sha256-AtrPdxTCZFE2&#43;/dd19FvvAt9dwEz2sdwwWDlGlByQCI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nicetomeetuuu.github.io/">
+                <img src='/pictures/xinzhizhu.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nicetomeetuuu.github.io/">QJJ-笔记</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>线程池在webserver中的实现</h1>
+        <small role="doc-subtitle">Linux下轻量级服务器实现记录-线程池部分</small>
+        <p class="post-date">2024年1月3日
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/c&#43;&#43;%E9%A1%B9%E7%9B%AE">C&#43;&#43;项目</a></li>
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/blog">blog</a></li>
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/webserver%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%9C%8D%E5%8A%A1%E5%99%A8">webserver轻量级服务器</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#1-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%80%BB%E8%A7%88">1. 线程池总览</a></li>
+<li><a href="#2-%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3">2. 代码详解</a>
+<ul>
+<li><a href="#21-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AF%B9%E8%B1%A1%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8%E7%9A%84%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8C%85%E6%8B%ACappend%E5%92%8Cappend-p">2.1 线程池对象可直接调用的成员函数包括<code>append</code>和<code>append-p</code>：</a></li>
+<li><a href="#22-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">2.2 线程池对象构造与析构函数</a></li>
+<li><a href="#23-worker%E5%87%BD%E6%95%B0">2.3 worker函数：</a></li>
+</ul>
+</li>
+<li><a href="#3-%E6%80%BB%E7%BB%93">3. 总结：</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="1-线程池总览">1. 线程池总览</h2>
+<ul>
+<li>实现了一个基于生产者-消费者模型的线程池：
+<ul>
+<li>生产者是调用<code>append</code>或者<code>append-p</code>方法的线程；</li>
+<li>消费者是线程池中的工作线程，在<code>run</code>方法中循环等待任务出现；</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-代码详解">2. 代码详解</h2>
+<ul>
+<li>类总览：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">threadpool</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*thread_number是线程池中线程的数量，max_requests是请求队列中最多允许的、等待处理的请求的数量*/</span>
+</span></span><span style="display:flex;"><span>    threadpool(<span style="color:#66d9ef">int</span> actor_model, connection_pool <span style="color:#f92672">*</span>connPool, <span style="color:#66d9ef">int</span> thread_number <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>, <span style="color:#66d9ef">int</span> max_request <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>threadpool();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">append</span>(T <span style="color:#f92672">*</span>request, <span style="color:#66d9ef">int</span> state);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">append_p</span>(T <span style="color:#f92672">*</span>request);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*工作线程运行的函数，它不断从工作队列中取出任务并执行之*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>worker(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> m_thread_number;        <span style="color:#75715e">//线程池中的线程数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> m_max_requests;         <span style="color:#75715e">//请求队列中允许的最大请求数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    pthread_t <span style="color:#f92672">*</span>m_threads;       <span style="color:#75715e">//描述线程池的数组，其大小为m_thread_number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span>T <span style="color:#f92672">*&gt;</span> m_workqueue; <span style="color:#75715e">//请求队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    locker m_queuelocker;       <span style="color:#75715e">//保护请求队列的互斥锁
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sem m_queuestat;            <span style="color:#75715e">//是否有任务需要处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connection_pool <span style="color:#f92672">*</span>m_connPool;  <span style="color:#75715e">//数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> m_actor_model;          <span style="color:#75715e">//模型切换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><ul>
+<li>维护最大请求数、线程数、线程池数组（线程指针）、请求队列、互斥锁、信号量实现的待处理任务记录、数据库链接池、模型类型（Reactor or Proactor）；</li>
+</ul>
+</li>
+</ul>
+<h3 id="21-线程池对象可直接调用的成员函数包括append和append-p">2.1 线程池对象可直接调用的成员函数包括<code>append</code>和<code>append-p</code>：</h3>
+<ul>
+<li>
+<p>append</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> threadpool<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>append(T <span style="color:#f92672">*</span>request, <span style="color:#66d9ef">int</span> state)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//传入参数：要添加的任务：request、任务状态：state（0表示读、其他写）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//使用队列互斥锁保障同一时间只有一个任务请求可以得到工作队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>    m_queuelocker.lock();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (m_workqueue.size() <span style="color:#f92672">&gt;=</span> m_max_requests)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        m_queuelocker.unlock();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    request<span style="color:#f92672">-&gt;</span>m_state <span style="color:#f92672">=</span> state;
+</span></span><span style="display:flex;"><span>    m_workqueue.push_back(request);
+</span></span><span style="display:flex;"><span>    m_queuelocker.unlock();
+</span></span><span style="display:flex;"><span>    m_queuestat.post();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>append_p，用于Proactor模式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> threadpool<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>append_p(T <span style="color:#f92672">*</span>request)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Proactor模式下，添加任务线程不需要确定任务状态，默认预先已知
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>    m_queuelocker.lock();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (m_workqueue.size() <span style="color:#f92672">&gt;=</span> m_max_requests)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        m_queuelocker.unlock();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    m_workqueue.push_back(request);
+</span></span><span style="display:flex;"><span>    m_queuelocker.unlock();
+</span></span><span style="display:flex;"><span>    m_queuestat.post();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="22-线程池对象构造与析构函数">2.2 线程池对象构造与析构函数</h3>
+<ul>
+<li>threadpool()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    threadpool<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>threadpool( <span style="color:#66d9ef">int</span> actor_model, connection_pool <span style="color:#f92672">*</span>connPool, <span style="color:#66d9ef">int</span> thread_number, <span style="color:#66d9ef">int</span> max_requests) <span style="color:#f92672">:</span> m_actor_model(actor_model),m_thread_number(thread_number), m_max_requests(max_requests), m_threads(NULL),m_connPool(connPool)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (thread_number <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> max_requests <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> std<span style="color:#f92672">::</span>exception();
+</span></span><span style="display:flex;"><span>        m_threads <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> pthread_t[m_thread_number];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>m_threads)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> std<span style="color:#f92672">::</span>exception();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> thread_number; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (pthread_create(m_threads <span style="color:#f92672">+</span> i, NULL, worker, <span style="color:#66d9ef">this</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//给static类型的worker传递自身指针，thread_number个工作线程均共享一个threadpool；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">delete</span>[] m_threads;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> std<span style="color:#f92672">::</span>exception();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (pthread_detach(m_threads[i]))
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//未成功回收资源，则自己回收工作线程并抛出异常；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">delete</span>[] m_threads;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> std<span style="color:#f92672">::</span>exception();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>threadpool<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::~</span>threadpool(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> []m_threads;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>在pthread_create中调用了worker函数，为该函数传递了threadpool对象的指针；</li>
+</ul>
+<h3 id="23-worker函数">2.3 worker函数：</h3>
+<ul>
+<li>worker函数是工作线程的默认回调函数，处理消息请求
+<ul>
+<li>调用了run函数，无限循环在线程池中读请求消息并处理</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>threadpool<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>worker(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//不能设定为非static函数，非static函数需要隐含的this指针指向调用它的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//而pthread_create必须操作全局函数；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//同样的也是为了让所有工作线程共享一个线程池函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    {
+</span></span><span style="display:flex;"><span>        threadpool <span style="color:#f92672">*</span>pool <span style="color:#f92672">=</span> (threadpool <span style="color:#f92672">*</span>)arg;
+</span></span><span style="display:flex;"><span>        pool<span style="color:#f92672">-&gt;</span>run();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> pool;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><ul>
+<li>run函数如下，根据当前的actor模式完成不同操作</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> threadpool<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>run()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (true)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            m_queuestat.wait();
+</span></span><span style="display:flex;"><span>            m_queuelocker.lock();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (m_workqueue.empty())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                m_queuelocker.unlock();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            T <span style="color:#f92672">*</span>request <span style="color:#f92672">=</span> m_workqueue.front();
+</span></span><span style="display:flex;"><span>            m_workqueue.pop_front();
+</span></span><span style="display:flex;"><span>            m_queuelocker.unlock();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>request)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> m_actor_model)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> request<span style="color:#f92672">-&gt;</span>m_state)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (request<span style="color:#f92672">-&gt;</span>read_once())
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>improv <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                        connectionRAII <span style="color:#a6e22e">mysqlcon</span>(<span style="color:#f92672">&amp;</span>request<span style="color:#f92672">-&gt;</span>mysql, m_connPool);
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>process();
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>improv <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>timer_flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (request<span style="color:#f92672">-&gt;</span>write())
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>improv <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>improv <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                        request<span style="color:#f92672">-&gt;</span>timer_flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                connectionRAII <span style="color:#a6e22e">mysqlcon</span>(<span style="color:#f92672">&amp;</span>request<span style="color:#f92672">-&gt;</span>mysql, m_connPool);
+</span></span><span style="display:flex;"><span>                request<span style="color:#f92672">-&gt;</span>process();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="3-总结">3. 总结：</h2>
+<ol>
+<li>threadpool()维护了一个工作线程池，在有消息请求到来后自动处理；</li>
+<li>使用信号量监听消息请求队列是否有请求发生；</li>
+<li>使用互斥量保证同一时刻只有一个线程在读消息请求队列；</li>
+<li>工作线程先拿请求，后处理</li>
+<li>需要进一步了解Reactor模式与Proactor模式：
+<ul>
+<li><a href="../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E9%83%A8%E5%88%86.md">高性能网络系统</a></li>
+</ul>
+</li>
+</ol>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 一只正在学技术的菜鸟</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

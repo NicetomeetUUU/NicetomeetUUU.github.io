@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Robotiq140——ros功能包实机调试</title>
+    <meta name="description" content="Robotiq140——ros功能包实机调试">
+    <meta name="keywords" content='blog, gokarna, hugo, ros相关'>
+
+    <meta property="og:url" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Robotiq140——ros功能包实机调试">
+    <meta property="og:description" content="Robotiq140——ros功能包实机调试">
+    <meta property="og:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+    <meta property="og:image:secure_url" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Robotiq140——ros功能包实机调试">
+    <meta name="twitter:description" content="Robotiq140——ros功能包实机调试">
+    <meta property="twitter:domain" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/">
+    <meta property="twitter:url" content="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/">
+    <meta name="twitter:image" content="https://nicetomeetuuu.github.io/pictures/xinzhizhu.jpg">
+
+    
+    <link rel="canonical" href="https://nicetomeetuuu.github.io/posts/ros%E7%9B%B8%E5%85%B3/robotiq140ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95-a2837118a57b4030a6a897684ac318a2/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.02dacf7714c2645136fbf75dd7d16fbc0b7d770133dac770c160e51a50724022.js" integrity="sha256-AtrPdxTCZFE2&#43;/dd19FvvAt9dwEz2sdwwWDlGlByQCI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nicetomeetuuu.github.io/">
+                <img src='/pictures/xinzhizhu.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nicetomeetuuu.github.io/">QJJ-笔记</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/posts/"> 笔记 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nicetomeetuuu.github.io/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Robotiq140——ros功能包实机调试</h1>
+        <small role="doc-subtitle">Robotiq140——ros功能包实机调试</small>
+        <p class="post-date">2023年7月9日
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/blog">blog</a></li>
+        
+            <li class="post-tag"><a href="https://nicetomeetuuu.github.io/tags/ros%E7%9B%B8%E5%85%B3">ros相关</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="robotiq140ros功能包实机调试">Robotiq140——ros功能包实机调试</h1>
+<p>Person: COO Ni</p>
+<h2 id="1-获取kinect版本的robotiq功能包本地编译通过记得安装joint_state_publisher_gui">1. 获取kinect版本的robotiq功能包，本地编译通过，记得安装joint_state_publisher_gui；</h2>
+<h2 id="2-使用usb联通设备开始调试">2. 使用usb联通设备开始调试：</h2>
+<ul>
+<li>需要为usb修改配置串口，首先查看Robotiq设备在系统中串口显示；</li>
+<li>默认会显示为  ttyUSB0 串口，针对此串口修改即可：</li>
+<li>参考的ros官网教程：<a href="http://wiki.ros.org/robotiq/Tutorials/Control%20of%20a%202-Finger%20Gripper%20using%20the%20Modbus%20RTU%20protocol%20%28ros%20kinetic%20and%20newer%20releases%29">http://wiki.ros.org/robotiq/Tutorials/Control of a 2-Finger Gripper using the Modbus RTU protocol (ros kinetic and newer releases)</a></li>
+</ul>
+<p><img src="Robotiq140%E2%80%94%E2%80%94ros%E5%8A%9F%E8%83%BD%E5%8C%85%E5%AE%9E%E6%9C%BA%E8%B0%83%E8%AF%95%20a2837118a57b4030a6a897684ac318a2/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>需要给串口读写操作，建议将设备用户添加到dialout group，确保永久读写权限</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo usermod -a -G dialout $username
+</span></span><span style="display:flex;"><span>sudo usermod -a -G dialout the_computer_user_name
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查看连接的串口</span>
+</span></span><span style="display:flex;"><span>dmesg | grep tty
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#输出如下</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>    0.004000<span style="color:#f92672">]</span> console <span style="color:#f92672">[</span>tty0<span style="color:#f92672">]</span> enabled
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>    1.781526<span style="color:#f92672">]</span> 00:05: ttyS0 at I/O 0x3f8 <span style="color:#f92672">(</span>irq <span style="color:#f92672">=</span> 4, base_baud <span style="color:#f92672">=</span> 115200<span style="color:#f92672">)</span> is a 16550A
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>421151.583450<span style="color:#f92672">]</span> usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>434351.168238<span style="color:#f92672">]</span> ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>434355.617853<span style="color:#f92672">]</span> usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>434373.072870<span style="color:#f92672">]</span> ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>434452.482350<span style="color:#f92672">]</span> usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0
+</span></span></code></pre></div><ul>
+<li>可以看到ttyUSB0已经在通信串口中显示了，接下来启动RTU协议下的robotiq通信脚本：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#报错缺少pymod_bus 依赖包</span>
+</span></span><span style="display:flex;"><span>No module named pymodbus.client.sync
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#看了一下是在python2.7环境下运行，通过pip 安装依赖包</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#安装pymodbus依赖解决问题</span>
+</span></span><span style="display:flex;"><span>sudo python -m pip install pymodbus
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#会遇到pyserial版本问题，我选择--no-dependencies直接略过，看看后续问题</span>
+</span></span></code></pre></div><p><a href="https://github.com/ros-industrial/robotiq/issues/121">https://github.com/ros-industrial/robotiq/issues/121</a></p>
+<p><a href="https://github.com/ros-industrial/robotiq/issues/45">https://github.com/ros-industrial/robotiq/issues/45</a></p>
+<ul>
+<li>
+<p>在上述问题解决方案中折中，通过：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span> 6416.940532<span style="color:#f92672">]</span> usb 1-2: FTDI USB Serial Device converter now attached to ttyUSB0
+</span></span></code></pre></div><p>找到了ttyUSB0是虚拟机下robotiq串行通信，给这个串口提供权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod + <span style="color:#ae81ff">777</span> /dev/ttyUSB0
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#接下来运行roscore、RtuNode，然后运行：</span>
+</span></span><span style="display:flex;"><span>rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#通过键盘操控成功与设备通信；</span>
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="官方给出的包内部没有-rviz仿真运动规划可以使用如下包">官方给出的包内部没有 rviz仿真运动规划，可以使用如下包：</h2>
+<p><a href="https://github.com/Danfoa/robotiq_2finger_grippers.git">https://github.com/Danfoa/robotiq_2finger_grippers.git</a></p>
+<h3 id="问题解决">问题解决！</h3>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 一只正在学技术的菜鸟</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
