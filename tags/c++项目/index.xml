@@ -34,7 +34,17 @@
 2. 代码实现 2.1 sem信号量控制类 构造函数析构函数没得说 wait函数用来等待信号量，当信号量值大于0，sem_wait立即返回0，否则返回非0值； post函数释放资源，使信号量增加，并且唤醒等待中的进程； class sem { public: sem() { if (sem_init(&amp;amp;m_sem, 0, 0) != 0) { throw std::exception(); } } sem(int num) { if (sem_init(&amp;amp;m_sem, 0, num) != 0) { throw std::exception(); } } ~sem() { sem_destroy(&amp;amp;m_sem); } bool wait() { return sem_wait(&amp;amp;m_sem) == 0; } bool post() { return sem_post(&amp;amp;m_sem) == 0; } private: sem_t m_sem; }; 2.</description>
     </item>
     <item>
-      <title>1. 环境配置</title>
+      <title>项目总览</title>
+      <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E9%A1%B9%E7%9B%AE%E6%80%BB%E8%A7%88/</link>
+      <pubDate>Sun, 17 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E9%A1%B9%E7%9B%AE%E6%80%BB%E8%A7%88/</guid>
+      <description>项目总览 webserver项目学习 本篇记录webserver项目代码与关键点实现 fork原作者代码并拉取到本地 参考的仓库代码:https://github.com/qinguoyi/TinyWebServer
+相当经典的C++项目
+具体操作详见
+Git使用教程</description>
+    </item>
+    <item>
+      <title>mysql与webserver开发环境配置</title>
       <link>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/posts/server%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>

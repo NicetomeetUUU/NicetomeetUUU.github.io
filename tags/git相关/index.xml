@@ -23,7 +23,7 @@ rhysqiu@RhysQiudeMacBook-Air learngit % git status On branch main nothing to com
     <item>
       <title>hugo&#43;github搭建静态个人网站</title>
       <link>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/hugo&#43;github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-ad1a5fb74e544849875d20b79d6c7c3c/</link>
-      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/posts/git%E7%9B%B8%E5%85%B3/hugo&#43;github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-ad1a5fb74e544849875d20b79d6c7c3c/</guid>
       <description>hugo+github搭建静态个人网站 1. 概念与准备工作 Hugo是利用go语言写的静态网站生成器，把markdown文件转成html； 需要维护两个仓库： 一个保存markdown文件与图片等； 另一个保存由hugo生成的静态html； 需要前期注册github账号，并在账户中添加本地ssh-key信息 需要一个趁手的编译器； 2. hugo安装 我使用macOS直接拿安装包管理器brew安装：
 brew install hugo 检查安装效果：
