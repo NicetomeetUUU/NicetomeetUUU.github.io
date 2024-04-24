@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on QJJ-笔记</title>
+    <link>https://nicetomeetuuu.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on QJJ-笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nicetomeetuuu.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. 设计模式总览</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88/</link>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88/</guid>
+      <description>设计模式总览 设计模式在代码复用、框架搭建中有着很关键的作用，了解设计模式，对看懂算法有很大意义，尽量多学一些！ </description>
+    </item>
+    <item>
+      <title>2.1 创建型模式之——单例模式</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>1. 单例模式概述： 核⼼思想是保证⼀个类只有⼀个实例，并提供⼀个全局访问点来访问这个实例； 全局访问点通常就是一个静态的方法； 单例模式的好处： 懒加载：需要时才实例化对象，提高性能； 全局控制：一个实例，方便控制用户对该实例的访问 节省资源：避免重复创建实例，且不同模块间可以通过单例共享部分资源； 基本要求： 私有的构造函数： 私有的静态实例变量 共有的静态方法 2. 单例模式创建： 单例模式的实现⽅式有多种，包括懒汉式、饿汉式等。 饿汉式指的是在类加载时就已经完成了实例的创建，不管后⾯创建的实例有没有使⽤，先创建再说，所以叫做“饿汉”。 懒汉式指的是只有在请求实例时才会创建，如果在⾸次请求时还没有创建，就创建⼀个新的实例，如果已经创建，就返回已有的实例，意思就是需要使⽤了再创建，所以称为“懒汉”。 饿汉式创建： #include&amp;lt;iostream&amp;gt; class singleton{ private: static singleton* instance; int m_data; singleton(int data=0): m_data(data){} public: static singleton&amp;amp; getinstance(){ return instance; } }; </description>
+    </item>
+  </channel>
+</rss>

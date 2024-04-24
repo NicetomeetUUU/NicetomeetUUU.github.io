@@ -13,14 +13,15 @@
       <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E9%83%A8%E5%88%86/</link>
       <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E9%83%A8%E5%88%86/</guid>
-      <description></description>
+      <description>1 数据库设计 1.1 country表 1.2 school表 1.3 item表 1.4 user表 1.5 系统设置表 2 路由表及功能详情如下 2.1 country相关： 2.2 school相关： 2.3 item相关： 2.4 user相关： 2.5 system相关 1 数据库设计 数据库整体暂定一年一版，每年新建一个数据库，上一年数据库封存； 1.1 country表 包含字段： 主键countryId，int整数； 国家英文名countryEngName，可变长字符，非空； 国家中文名countryChiName，可变长字符，非空； 国家与学校关联字段，JSON类型，内存int类型数组保存schoolId信息； 省字段，JSON类型，内存Province类数组，保存具体省份信息； Province类包含属性： ProvinceId，int整数； EngName，省英文名，string； ChiName，省中文名，string； 1.2 school表 包含字段： 主键schoolId，int整数； 学校英文名：schoolEngName，可变长字符，非空； 学校中文名：schoolChiName，可变长字符，非空； 学校简介：schoolAbbreviation，可变长字符； 学校类型：schoolType，int类型； 所在省份：province，int类型，对应provinceId； 官方网站：officialWebLink，可变长字符，非空； 备注：schoolRemark，可变长字符； 学校与项目关联字段：JSON，内存int类型数组，保存itemId信息； 1.3 item表 包含字段： 主键itemId，int整数； 项目名称itemName，可变长字符，非空； 描述level文字，可变长字符，非空； level占比，JSON，内存Level类型数组，保存level信息； itemRemark项目备注，string类型； Level类包含属性： levelId，int整数； levelRate，占比，string类型 ifNotCombine，判断是否存在该等级用户属性，bool类型； 1.4 user表 包含字段； 主键userId，int类型； 用户账户userAccount，可变长字符，非空； 用户密码userPassWd，可变长字符； 用户邮箱userEmail，可变长字符； 用户电话userNumber，可变长字符，非空； 用户等级userLevel，int类型，非空； 学生数量studentCount，int类型； 1.</description>
     </item>
     <item>
       <title>需求分析部分记录</title>
       <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E9%83%A8%E5%88%86/</link>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E9%83%A8%E5%88%86/</guid>
-      <description></description>
+      <description>需求分析部分记录 分为PC端（BS）与移动端（小程序端）两类功能
+1.功能总览： PC端功能： 移动端功能： </description>
     </item>
     <item>
       <title>网络系统部分</title>
