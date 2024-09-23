@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on QJJ-笔记</title>
+    <link>https://nicetomeetuuu.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on QJJ-笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nicetomeetuuu.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C中线程操作学习记录</title>
+      <link>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3/%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3/%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      <description>本篇记录一下pthread基础操作 1. 创建线程（pthread_create）： 需要参数包括线程id、线程属性、线程函数和传递进去的函数参数； 注意pthread中，传递进去的函数要接收void类型结果，且传入的arg也为void类型； 使用例子：
+#include &amp;lt;pthread.h&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;unisid.h&amp;gt; /* pthread_t 线程ID，不同操作系统中有不同实现方式，可能uint、int或结构体 pthread_create()函数原型： int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); thread: 线程ID attr: 线程属性，NULL表示默认属性，线程属性内存储栈大小、返回值等信息； start_routine: 线程函数 arg: 线程函数参数 返回值：成功返回0，失败返回错误码 */ void *myThreadFun(void *vargp) { printf(&amp;#34;Hello World!\n&amp;#34;); return NULL; } int main() { pthread_t thread_id; printf(&amp;#34;creating thread\n&amp;#34;); int ret = pthread_create(&amp;amp;thread_id, NULL, myThreadFun, NULL); if (ret) { printf(&amp;#34;Error:unable to create thread, %d\n&amp;#34;, ret); exit(-1); } printf(&amp;#34;created thread, returning\n&amp;#34;); pthread_exit(NULL); } 2.</description>
+    </item>
+    <item>
+      <title>C&#43;&#43;右值引用学习记录</title>
+      <link>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/c&#43;&#43;11%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/c&#43;&#43;%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/c&#43;&#43;11%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/c&#43;&#43;%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/</guid>
+      <description>本篇记录一下C++11中的右值引用 参考blog：https://www.cnblogs.com/kekec/p/10810507.html
+1. 什么是左值和右值： 左值：非临时的（具名的，可在多条语句中使用，可以被取地址）。可以出现在等号的左边或右边。可分为非常量左值和常量左值。 右值：临时的（不具名，只在当前语句中有效，无法取地址），只能在等号右侧出现，也分为非常量右值和常量右值。 2. 什么是左值引用和右值引用： 说白了，右值引用就是数据类型的一种，给右值起一个别名方便后续操作；
+3. 右值引用的作用： 主要用途是支持 移动语义 和 完美转发
+什么是移动语义： 基于std::move()函数，返回一个传入参数的右值，实现资源传递； 通过移动语义可以实现类的移动构造与移动赋值运算符，避免临时对象的资源复制，提高效率；
+什么是完美转发： 允许函数模版完美转发参数类型，保持参数的左右值属性不变； 实际上，在转发左值或者右值的时候，forward&amp;lt;T&amp;gt; 和 static_cast&amp;lt;T&amp;amp;&amp;amp;&amp;gt;作用相当； （转发将参数下发到其他函数中，即使传递进来的是右值，因为赋变量名也会被转为左值转发，所以需要类型转换）； 具体请参考： 完美转发</description>
+    </item>
+    <item>
+      <title>C&#43;&#43;完美转发学习记录</title>
+      <link>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/c&#43;&#43;11%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/c&#43;&#43;%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/c&#43;&#43;11%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/c&#43;&#43;%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91/</guid>
+      <description>本篇学习一下C++完美转发 在c++中，难免遇到将函数参数原封不动的传递给另一个函数的场景，称为参数转发； 完美转发就是为了在参数传递的过程中，避免不必要的拷贝或移动，保持参数的原始类型与属性而来；
+保持参数的类型与属性：保持参数的左值、右值属性； 避免不必要的拷贝与移动：正确区分参数的左值、右值属性，避免不必要的拷贝、移动开销以及性能问题；主要是通过转发函数处理。 可以说，因为移动语义的出现，推动了完美转发的出现。 1. 冲突场景 考虑下面的场景，因转发函数中未能识别传递的参数val是左值还是右值，因而全部按照拷贝构造函数处理； #include &amp;lt;iostream&amp;gt; using namespace std; class Test{ public: Test(const string&amp;amp; other){ cout&amp;lt;&amp;lt;&amp;#34;左值引用&amp;#34;&amp;lt;&amp;lt;endl; val = other; } Test(const string&amp;amp;&amp;amp; other){ cout&amp;lt;&amp;lt;&amp;#34;右值引用&amp;#34;&amp;lt;&amp;lt;endl; val = other; } private: string val; }; Test makeTest(string val){ return Test(val); } int main(){ string tmp = &amp;#34;10&amp;#34;; makeTest(tmp); makeTest(&amp;#34;10&amp;#34;); return 0; } 执行结果： 全部按照拷贝构造执行，因为下发的参数是左值，对于右值传递的情况，发生了两次深拷贝； 2. 引用折叠 即使利用引用折叠，使得转发函数接收右值类型，仍旧无法完成对返回对象的移动构造函数调用: #include &amp;lt;iostream&amp;gt; #include &amp;lt;type_traits&amp;gt; using namespace std; class Test{ public: Test(const string&amp;amp; other){ cout&amp;lt;&amp;lt;&amp;#34;左值引用&amp;#34;&amp;lt;&amp;lt;endl; val = other; } Test(const string&amp;amp;&amp;amp; other){ cout&amp;lt;&amp;lt;&amp;#34;右值引用&amp;#34;&amp;lt;&amp;lt;endl; val = other; } private: string val; }; template&amp;lt;class T&amp;gt; Test makeTest(T&amp;amp;&amp;amp; val){ if(is_lvalue_reference&amp;lt;T&amp;amp;&amp;amp;&amp;gt;::value) cout&amp;lt;&amp;lt;&amp;#34;传递为左值。&amp;#34;&amp;lt;&amp;lt;endl; else cout&amp;lt;&amp;lt;&amp;#34;传递为右值。&amp;#34;&amp;lt;&amp;lt;endl; return Test(val); } int main(){ string tmp = &amp;#34;10&amp;#34;; makeTest(tmp); makeTest(move(tmp)); return 0; } 输出如下： 这里仍旧调用两次拷贝构造函数； 如果代码中显式地调用了拷贝构造函数，那么即使传递的是右值，也会使用拷贝构造函数。 引用折叠细则： 有一个引用是左值类型，将折叠为左值引用； 剩余场景都将折叠为右值引用； 3.</description>
+    </item>
+    <item>
+      <title>C&#43;&#43;类型转换学习记录</title>
+      <link>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/c&#43;&#43;11%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/c&#43;&#43;%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/c&#43;&#43;11%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/c&#43;&#43;%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>本篇记录C++类型转换 在C++11中，引入了4种类型转换特性，每个类型转换有其独特功能，下面根据具体场景分析
+static_cast const_cast reinterpret_cast dynamic_cast </description>
+    </item>
+    <item>
+      <title>C&#43;&#43;基础速览</title>
+      <link>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80%E9%80%9F%E8%A7%88/</link>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/c&#43;&#43;%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80%E9%80%9F%E8%A7%88/</guid>
+      <description>C++可用性变化 1. 常量： nullptr的引入： 为了区分NULL和0，引入了nullptr； void* 不可以隐式转化为其他类型，因而会出现： void foo(int){ cout&amp;lt;&amp;lt;&amp;#34;the int version foo is used&amp;#34;&amp;lt;&amp;lt;; } void foo(void*){ cout&amp;lt;&amp;lt;&amp;#34;the void* version foo is used&amp;#34;&amp;lt;&amp;lt;; } 在调用foo(NULL)的时候，会选择int版本的函数，违反直觉； 所以现代c++编程，指针就nullptr，非指针就0； constexpr引入： 与const的区别： 计算时间：const 变量的值可以在运行时计算，而 constexpr 变量的值必须在编译时就能确定。 表达式类型：const 可以用于任何类型的表达式，而 constexpr 只能用于那些在编译时就能求值的表达式。 用途：constexpr 主要用于模板元编程和编译时计算，而 const 可以用于更广泛的场合。 </description>
+    </item>
+  </channel>
+</rss>

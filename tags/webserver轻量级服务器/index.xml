@@ -41,7 +41,8 @@
       <description>项目总览 webserver项目学习 本篇记录webserver项目代码与关键点实现 fork原作者代码并拉取到本地 参考的仓库代码:https://github.com/qinguoyi/TinyWebServer
 相当经典的C++项目
 具体操作详见
-Git使用教程</description>
+Git使用教程
+主要的工作流程： 1. 通过server类集成各部分的功能 包括：日志写入、sql链接池、线程池、设置触发模式、事件监听与循环执行； 1.1 log_write函数 通过LOG类单例初始化，异步写入、同步写入两种模式； 1.2 sql_pool()函数 设定单例模式工作的数据库连接池，并初始化数据库信息、用户名信息与端口信息； void WebServer::sql_pool() { //初始化数据库连接池 m_connPool = connection_pool::GetInstance(); m_connPool-&amp;gt;init(&amp;#34;localhost&amp;#34;, m_user, m_passWord, m_databaseName, 3306, m_sql_num, m_close_log); //初始化数据库读取表 users-&amp;gt;initmysql_result(m_connPool); } 1.3 thread_pool()函数 代码如下： #include &amp;#34;config.h&amp;#34; #include &amp;lt;yaml-cpp/yaml.h&amp;gt; int main(int argc, char *argv[]) { //需要修改的数据库信息,登录名,密码,库名 YAML::Node sql_config = YAML::LoadFile(&amp;#34;./database_info/database_info.yaml&amp;#34;); string user = sql_config[&amp;#34;user&amp;#34;].as&amp;lt;string&amp;gt;(); string passwd = sql_config[&amp;#34;passwd&amp;#34;].as&amp;lt;string&amp;gt;(); string databasename = sql_config[&amp;#34;databasename&amp;#34;].as&amp;lt;string&amp;gt;(); //命令行解析 Config config; config.parse_arg(argc, argv); WebServer server; //初始化 server.</description>
     </item>
     <item>
       <title>mysql与webserver开发环境配置</title>

@@ -9,11 +9,25 @@
     <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nicetomeetuuu.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>gin中间件使用</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/gin%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/gin%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BD%BF%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>技术文档部分记录</title>
       <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E9%83%A8%E5%88%86/</link>
       <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E9%83%A8%E5%88%86/</guid>
       <description>1 数据库设计 1.1 country表 1.2 school表 1.3 item表 1.4 user表 1.5 系统设置表 2 路由表及功能详情如下 2.1 country相关： 2.2 school相关： 2.3 item相关： 2.4 user相关： 2.5 system相关 1 数据库设计 数据库整体暂定一年一版，每年新建一个数据库，上一年数据库封存； 1.1 country表 包含字段： 主键countryId，int整数； 国家英文名countryEngName，可变长字符，非空； 国家中文名countryChiName，可变长字符，非空； 国家与学校关联字段，JSON类型，内存int类型数组保存schoolId信息； 省字段，JSON类型，内存Province类数组，保存具体省份信息； Province类包含属性： ProvinceId，int整数； EngName，省英文名，string； ChiName，省中文名，string； 1.2 school表 包含字段： 主键schoolId，int整数； 学校英文名：schoolEngName，可变长字符，非空； 学校中文名：schoolChiName，可变长字符，非空； 学校简介：schoolAbbreviation，可变长字符； 学校类型：schoolType，int类型； 所在省份：province，int类型，对应provinceId； 官方网站：officialWebLink，可变长字符，非空； 备注：schoolRemark，可变长字符； 学校与项目关联字段：JSON，内存int类型数组，保存itemId信息； 1.3 item表 包含字段： 主键itemId，int整数； 项目名称itemName，可变长字符，非空； 描述level文字，可变长字符，非空； level占比，JSON，内存Level类型数组，保存level信息； itemRemark项目备注，string类型； Level类包含属性： levelId，int整数； levelRate，占比，string类型 ifNotCombine，判断是否存在该等级用户属性，bool类型； 1.4 user表 包含字段； 主键userId，int类型； 用户账户userAccount，可变长字符，非空； 用户密码userPassWd，可变长字符； 用户邮箱userEmail，可变长字符； 用户电话userNumber，可变长字符，非空； 用户等级userLevel，int类型，非空； 学生数量studentCount，int类型； 1.</description>
+    </item>
+    <item>
+      <title>日志系统设计</title>
+      <link>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://nicetomeetuuu.github.io/posts/%E5%9F%BA%E4%BA%8Ego%E7%9A%84bs%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%AE%B0%E5%BD%95/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</guid>
+      <description>日志系统总览： 1. </description>
     </item>
     <item>
       <title>需求分析部分记录</title>
@@ -51,7 +65,7 @@ rhysqiu@RhysQiudeMacBook-Air learngit % git status On branch main nothing to com
 brew install hugo 检查安装效果：
 hugo version 3. 创建github仓库： 3.1 先创建一个保存markdown文件和图片的仓库 名字随便起； 设置public，创建个readme； 3.2 创建静态页面仓库 仓库名称必须使用特殊格式： .github.io. 其中是github昵称； 设置public，创建readme（会默认选定main作为主分支）； 4. 使用hugo创建网站 创建网站文件夹：
 hugo new site &amp;lt;your_site_name&amp;gt; 创建后在当前目录生成一个文件夹，cd进去可以发现文件列表如下：
-其中，关键文件夹是content、public与themes content保存博客源文件； public内保存hugo生成的静态网站； themes是自建或下载的网页主题； hugo site放到github上： 未完待续。。。 </description>
+其中，关键文件夹是content、public与themes content保存博客源文件； public内保存hugo生成的静态网站； themes是自建或下载的网页主题； hugo site放到github上： cd到public文件夹，git init声明为一个github仓库，并指定远程仓库链接git remote add &amp;lt;git@xxx&amp;gt; 回到上级目录，hugo命令自动生成静态网页， 回到public文件夹下，指定分支为main，执行如下代码即可完成操作； git add . git commit -m &amp;#34;description about added files&amp;#34; git push origin main 之后在github上访问即可看到静态网站； 未完待续。。。 </description>
     </item>
     <item>
       <title>ros-srv通信</title>
@@ -97,7 +111,8 @@ rossrv show call_for_move.srv [gazebo_tactile_data_simulator/call_for_move]: geo
       <description>项目总览 webserver项目学习 本篇记录webserver项目代码与关键点实现 fork原作者代码并拉取到本地 参考的仓库代码:https://github.com/qinguoyi/TinyWebServer
 相当经典的C++项目
 具体操作详见
-Git使用教程</description>
+Git使用教程
+主要的工作流程： 1. 通过server类集成各部分的功能 包括：日志写入、sql链接池、线程池、设置触发模式、事件监听与循环执行； 1.1 log_write函数 通过LOG类单例初始化，异步写入、同步写入两种模式； 1.2 sql_pool()函数 设定单例模式工作的数据库连接池，并初始化数据库信息、用户名信息与端口信息； void WebServer::sql_pool() { //初始化数据库连接池 m_connPool = connection_pool::GetInstance(); m_connPool-&amp;gt;init(&amp;#34;localhost&amp;#34;, m_user, m_passWord, m_databaseName, 3306, m_sql_num, m_close_log); //初始化数据库读取表 users-&amp;gt;initmysql_result(m_connPool); } 1.3 thread_pool()函数 代码如下： #include &amp;#34;config.h&amp;#34; #include &amp;lt;yaml-cpp/yaml.h&amp;gt; int main(int argc, char *argv[]) { //需要修改的数据库信息,登录名,密码,库名 YAML::Node sql_config = YAML::LoadFile(&amp;#34;./database_info/database_info.yaml&amp;#34;); string user = sql_config[&amp;#34;user&amp;#34;].as&amp;lt;string&amp;gt;(); string passwd = sql_config[&amp;#34;passwd&amp;#34;].as&amp;lt;string&amp;gt;(); string databasename = sql_config[&amp;#34;databasename&amp;#34;].as&amp;lt;string&amp;gt;(); //命令行解析 Config config; config.parse_arg(argc, argv); WebServer server; //初始化 server.</description>
     </item>
     <item>
       <title>mysql与webserver开发环境配置</title>
