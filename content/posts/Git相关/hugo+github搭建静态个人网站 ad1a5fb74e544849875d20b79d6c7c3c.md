@@ -1,6 +1,6 @@
 ---
 title: "hugo+github搭建静态个人网站"
-date: 2024-02-10
+date: 2024-02-05
 description: "使用静态网站记录个人技术博客"
 type: "post"
 tags: ["blog","git相关"]
@@ -62,5 +62,13 @@ tags: ["blog","git相关"]
     - public内保存hugo生成的静态网站；
     - themes是自建或下载的网页主题；
 1. hugo site放到github上：
-
+- cd到public文件夹，``git init``声明为一个github仓库，并指定远程仓库链接``git remote add <git@xxx>``
+- 回到上级目录，``hugo``命令自动生成静态网页，
+- 回到public文件夹下，指定分支为main，执行如下代码即可完成操作；
+```bash
+git add .   
+git commit -m "description about added files" 
+git push origin main
+```
+- 之后在github上访问即可看到静态网站；
 # 未完待续。。。
